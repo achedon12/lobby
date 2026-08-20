@@ -51,8 +51,22 @@ export function LocaleSwitcher({
                                 //
                                 // Les marges négatives compensent : la hauteur
                                 // de l'en-tête ne bouge pas d'un pixel.
-                                className={`-my-1.5 rounded px-1.5 py-1.5 no-underline transition-colors ${
-                                    active ? 'text-fg' : 'text-fg-muted/70 hover:text-fg'
+                                className={`-my-1.5 rounded px-1.5 py-1.5 transition-colors ${
+                                    // ⚠️ La langue active portait la SEULE
+                                    // distinction de couleur — encre contre
+                                    // gris. Invisible à un daltonien ou sur un
+                                    // écran peu contrasté, et contraire au
+                                    // critère WCAG 1.4.1. Le soulignement est
+                                    // le second signal, non coloré.
+                                    //
+                                    // Réservé à l'état actif : les liens
+                                    // inactifs restent sans soulignement, y
+                                    // compris au survol, sinon le repère
+                                    // « vous êtes ici » se confondrait avec un
+                                    // simple survol.
+                                    active
+                                        ? 'text-fg underline decoration-2 underline-offset-4'
+                                        : 'text-fg-muted/70 no-underline hover:text-fg'
                                 }`}
                             >
                                 <span aria-hidden="true">{LOCALE_SHORT[candidate]}</span>

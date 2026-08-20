@@ -303,7 +303,7 @@ celle dont la requête média vise le clair.
 
 ---
 
-### [ ] 11. La langue active n'est signalée que par la couleur
+### [x] 11. La langue active n'est signalée que par la couleur
 
 **Le problème.** Dans `FR · EN · ES · DE`, la langue courante se distingue par
 sa seule couleur — encre contre gris. Un visiteur daltonien ou un écran à
@@ -315,3 +315,11 @@ l'en-tête vient d'être allégé, il ne s'agit pas de le réalourdir.
 
 **Vérification.** Capture en niveaux de gris : la langue active doit rester
 identifiable.
+
+**Fait.** Un soulignement sur la seule langue active. Réservé à cet état : les
+liens inactifs n'en reçoivent pas, y compris au survol, sinon le repère « vous
+êtes ici » se confondrait avec un simple passage de souris.
+
+Vérifié en niveaux de gris — `FR` reste identifiable par son trait seul. La
+capture a été prise en couleur puis désaturée avec sharp : Chrome refusait de
+rendre la page en `file://` avec un filtre CSS, et le résultat est équivalent.
