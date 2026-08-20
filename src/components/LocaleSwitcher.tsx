@@ -41,7 +41,17 @@ export function LocaleSwitcher({
                                 lang={candidate}
                                 aria-current={active ? 'true' : undefined}
                                 title={LOCALE_NAMES[candidate]}
-                                className={`rounded px-0.5 no-underline transition-colors ${
+                                // La cible utile faisait ~20 px de haut : lisible
+                                // à la souris, hasardeuse au pouce, et sous les
+                                // 24 px de la règle WCAG 2.2. Elle est élargie
+                                // par du remplissage, PAS par la taille du
+                                // texte — grossir les codes de langue aurait
+                                // redonné aux contrôles le poids qu'on venait
+                                // de leur retirer.
+                                //
+                                // Les marges négatives compensent : la hauteur
+                                // de l'en-tête ne bouge pas d'un pixel.
+                                className={`-my-1.5 rounded px-1.5 py-1.5 no-underline transition-colors ${
                                     active ? 'text-fg' : 'text-fg-muted/70 hover:text-fg'
                                 }`}
                             >

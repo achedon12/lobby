@@ -115,7 +115,7 @@ la pseudo-classe.
 
 ---
 
-### [ ] 5. Les liens de langue sont trop petits au doigt
+### [x] 5. Les liens de langue sont trop petits au doigt
 
 **Le problème.** `FR · EN · ES · DE` en `text-xs` avec `px-0.5` : la cible
 utile fait environ 20 px de haut, sous les 24 px recommandés. Lisible à la
@@ -126,6 +126,12 @@ remplissage vertical, pas taille de police.
 
 **Vérification.** L'audit `target-size` de Lighthouse reste conforme, et la
 hauteur mesurée dépasse 24 px.
+
+**Fait.** `py-1.5` et `px-1.5` portent la cible de ~20 à 28 px de haut, avec
+des marges négatives `-my-1.5` pour que la hauteur de l'en-tête ne bouge pas
+d'un pixel. Élargi par le REMPLISSAGE, jamais par la taille du texte :
+grossir les codes de langue aurait redonné aux contrôles le poids visuel qu'on
+venait tout juste de leur retirer.
 
 ---
 
