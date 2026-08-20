@@ -246,7 +246,20 @@
             box-shadow 260ms ease;
     }
 
-    .tile:hover,
+    /* ⚠️ Le survol est réservé aux appareils qui en ont un. Au doigt, `:hover`
+       reste ACCROCHÉ après l'appui sur la plupart des navigateurs mobiles : la
+       tuile restait levée et sa vignette agrandie jusqu'au prochain toucher
+       ailleurs, ce qui la faisait passer pour sélectionnée. */
+    @media (hover: hover) {
+        .tile:hover {
+            transform: rotate(0deg) translateY(-6px);
+        }
+
+        .tile:hover .tile-art {
+            transform: scale(1.06);
+        }
+    }
+
     .tile:focus-within {
         transform: rotate(0deg) translateY(-6px);
     }
@@ -255,9 +268,23 @@
         transition: transform 420ms cubic-bezier(0.2, 0.9, 0.3, 1);
     }
 
-    .tile:hover .tile-art,
     .tile:focus-within .tile-art {
         transform: scale(1.06);
+    }
+
+    /* L'appui, lui, vaut pour TOUS les appareils : c'est le seul retour dont
+       dispose un utilisateur au doigt entre son geste et le changement de
+       page. Sans lui, appuyer sur une tuile ne produisait rien. Le trajet est
+       court et rapide — un accusé de réception, pas une animation. */
+    .tile:active {
+        transform: rotate(0deg) translateY(-1px) scale(0.985);
+        transition-duration: 80ms;
+    }
+
+    /* Le halo gris que pose iOS au toucher se superpose à cet appui et le
+       brouille. Il n'est retiré que parce qu'il est REMPLACÉ. */
+    .tile .card-link {
+        -webkit-tap-highlight-color: transparent;
     }
 
     /* Le lien du titre couvre la carte : c'est donc LUI qui reçoit le focus, et

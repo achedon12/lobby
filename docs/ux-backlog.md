@@ -85,7 +85,7 @@ casse pas.
 
 ## P2 — confort
 
-### [ ] 4. Aucun retour au toucher sur les tuiles
+### [x] 4. Aucun retour au toucher sur les tuiles
 
 **Le problème.** Tout l'effet de survol (levée, zoom de la vignette) est en
 `:hover`, qui n'existe pas au doigt. Sur mobile, appuyer sur une tuile ne
@@ -96,6 +96,22 @@ l'appui soit accusé immédiatement.
 
 **Vérification.** Capture avec `:active` forcé, et `prefers-reduced-motion`
 toujours respecté.
+
+**Fait.** `:active` bref — redressement, 1 px d'enfoncement, 1,5 % de retrait,
+80 ms — appliqué sur TOUS les appareils : c'est le seul retour dont dispose un
+doigt entre le geste et le changement de page.
+
+Second défaut trouvé en chemin : le survol n'était pas conditionné. Au toucher,
+`:hover` reste accroché après l'appui sur la plupart des navigateurs mobiles —
+la tuile restait levée et sa vignette agrandie jusqu'au prochain toucher
+ailleurs, ce qui la faisait passer pour sélectionnée. Le survol est désormais
+sous `@media (hover: hover)`, le focus clavier restant traité à part.
+
+Le halo gris d'iOS est neutralisé, mais seulement parce qu'il est REMPLACÉ.
+
+Vérifié en rejouant les déclarations de `:active` sous une classe, sur une
+copie de la page réellement servie — Chrome sans pilotage ne sait pas forcer
+la pseudo-classe.
 
 ---
 
