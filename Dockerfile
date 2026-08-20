@@ -42,7 +42,16 @@ RUN sed "s|__MATOMO_HOST__|${NEXT_PUBLIC_MATOMO_URL}|g" nginx/default.conf.templ
 # Image NON PRIVILÉGIÉE : elle tourne sous l'uid 101 et écoute 8080, là où
 # l'image nginx officielle démarre en root pour pouvoir se lier au port 80.
 # Aucun processus Node en production — le site est du HTML déjà écrit.
-FROM nginxinc/nginx-unprivileged:1.29-alpine AS runner
+#
+# Variante `-slim` : 20 Mo au lieu de 82 Mo. Elle laisse de côté les modules
+# dynamiques njs, geoip, xslt et image-filter, dont ce site n'utilise aucun.
+# `gzip`, lui, est compilé dans le cœur de nginx et reste disponible.
+#
+# ⚠️ La slim n'embarque pas les scripts d'entrée `/docker-entrypoint.d/`, donc
+# pas d'envsubst au démarrage. Sans effet ici : la configuration est déjà
+# figée dans l'image à la construction — mais y revenir casserait le
+# démarrage sans le moindre message.
+FROM nginxinc/nginx-unprivileged:1.29-alpine-slim AS runner
 
 COPY --from=builder /app/default.conf /etc/nginx/conf.d/default.conf
 COPY --from=builder /app/security-headers.conf /etc/nginx/security-headers.conf
