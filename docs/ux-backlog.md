@@ -145,7 +145,7 @@ venait tout juste de leur retirer.
 
 ---
 
-### [ ] 6. Le premier octet du jeu attend la résolution DNS
+### [x] 6. Le premier octet du jeu attend la résolution DNS
 
 **Le problème.** Au clic, le navigateur découvre `pushyourluck.net` : il doit
 résoudre le DNS, ouvrir TCP et négocier TLS avant le premier octet. Sur un
@@ -158,6 +158,19 @@ plus qu'elle ne rapporte.
 
 **Vérification.** Les balises sont dans le `<head>` des 16 pages, et le score
 de performance ne bouge pas.
+
+**Fait, avec un écart assumé sur la vérification.** Les balises ne sont posées
+que sur les **4 pages d'accueil**, pas sur les 16. Les pages « à propos » et
+légales ne contiennent aucun lien vers un jeu depuis que le pied de page ne
+les répète plus : y résoudre ces domaines serait du travail pur perte. Le
+critère « 16 pages » avait été écrit avant ce changement.
+
+`dns-prefetch` et non `preconnect`, comme prévu : ouvrir une connexion complète
+— poignée de main TLS comprise — pour un clic incertain coûte plus qu'elle ne
+rapporte. React 19 remonte les balises dans le `<head>` sans aide.
+
+Vérifié : 4/4 accueils portent les deux balises, 0/12 pour les autres, et la
+performance ne régresse pas.
 
 ---
 

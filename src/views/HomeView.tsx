@@ -13,6 +13,25 @@ export function HomeView({ locale }: { locale: Locale }) {
 
     return (
         <>
+            {/* Au clic, le navigateur DÉCOUVRE le domaine du jeu : il doit
+                résoudre le DNS, ouvrir TCP puis négocier TLS avant le premier
+                octet. Sur un réseau mobile cela se compte en centaines de
+                millisecondes, et c'est la transition la plus importante du
+                site. Résoudre le nom à l'avance en retire la première part.
+
+                `dns-prefetch` et non `preconnect` : ouvrir une connexion
+                complète — poignée de main TLS comprise — pour un clic qui
+                n'arrivera peut-être pas coûte plus qu'elle ne rapporte.
+
+                Posé sur l'ACCUEIL seulement, pas dans le châssis commun : les
+                pages « à propos » et légales ne contiennent aucun lien vers un
+                jeu, et y résoudre ces domaines serait du travail pur perte.
+
+                React 19 remonte ces balises dans le <head> tout seul. */}
+            {GAMES.map((game) => (
+                <link key={game.id} rel="dns-prefetch" href={new URL(game.url).origin} />
+            ))}
+
             {/* En-tête de page volontairement COURT : sur un annuaire, chaque
                 ligne de texte avant la grille repousse les jeux hors de l'écran,
                 et ce sont eux qu'on vient voir. */}
