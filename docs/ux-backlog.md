@@ -349,7 +349,7 @@ servis.
 
 ---
 
-### [ ] 13. Les pages légales ne portent pas de date
+### [x] 13. Les pages légales ne portent pas de date
 
 **Le problème.** Des mentions légales et une politique de confidentialité sans
 date de mise à jour n'ont pas de valeur de preuve : un visiteur ne sait pas
@@ -362,6 +362,19 @@ changerait à chaque déploiement et ne voudrait rien dire.
 
 **Vérification.** La date apparaît sur les quatre versions de chaque page, et
 ne bouge pas d'une construction à l'autre.
+
+**Fait.** La date est écrite à la main dans `src/lib/legal.ts`, à côté du texte
+qu'elle date — surtout pas une date de construction, qui changerait à chaque
+déploiement et ne dirait plus rien.
+
+Elle est placée SOUS l'accroche : c'est en ouvrant des mentions légales qu'on
+se demande quelle version on lit, pas après les avoir parcourues. Un élément
+`<time datetime>` porte la valeur lisible par une machine, et `Intl` formate le
+texte dans la langue de la page — à la construction, donc figé dans le HTML
+servi : « 20 août 2026 », « August 20, 2026 », « 20 de agosto de 2026 »,
+« 20. August 2026 ».
+
+La page « à propos » n'en reçoit pas : elle ne fait pas foi.
 
 ---
 

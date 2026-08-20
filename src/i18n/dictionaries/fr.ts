@@ -147,6 +147,7 @@ export const fr = {
         contactBody: 'Pour exercer vos droits ou poser une question :',
         backHome: 'Voir les jeux',
     },
+    updatedLabel: 'Dernière mise à jour : {date}',
     footer: {
         madeBy: 'Créé par {author}',
         navLegal: 'Mentions légales',

@@ -141,6 +141,7 @@ export const en: Dictionary = {
         contactBody: 'To exercise your rights or ask a question:',
         backHome: 'See the games',
     },
+    updatedLabel: 'Last updated: {date}',
     footer: {
         madeBy: 'Built by {author}',
         navLegal: 'Legal notice',

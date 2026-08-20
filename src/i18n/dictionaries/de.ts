@@ -142,6 +142,7 @@ export const de: Dictionary = {
         contactBody: 'Um deine Rechte auszuüben oder eine Frage zu stellen:',
         backHome: 'Die Spiele ansehen',
     },
+    updatedLabel: 'Zuletzt aktualisiert: {date}',
     footer: {
         madeBy: 'Erstellt von {author}',
         navLegal: 'Impressum',

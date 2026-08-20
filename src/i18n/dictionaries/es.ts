@@ -142,6 +142,7 @@ export const es: Dictionary = {
         contactBody: 'Para ejercer tus derechos o hacer una pregunta:',
         backHome: 'Ver los juegos',
     },
+    updatedLabel: 'Última actualización: {date}',
     footer: {
         madeBy: 'Creado por {author}',
         navLegal: 'Aviso legal',
