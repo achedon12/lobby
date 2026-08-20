@@ -1,0 +1,60 @@
+# Stack de PRODUCTION de jeux.leoderoin.fr.
+#
+# Le site est entièrement statique : un seul conteneur nginx, aucune base,
+# aucun processus Node. Rien à sauvegarder, rien à migrer.
+#
+# Isolation vis-à-vis des autres stacks de la machine : projet Docker `jeux`,
+# réseau `jeux_network`, conteneur préfixé `jeux_`. Aucun nom n'est partagé
+# avec pushyourluck ni werewolf.
+#
+# ⚠️ PORTS DÉJÀ PRIS SUR LE SERVEUR : 3000 (werewolf), 3001/3005 (pushyourluck),
+# 3307 (MySQL), 5433 (Postgres), 6379 (Redis). D'où le 3006 par défaut, et la
+# variable pour en changer sans toucher au fichier.
+#
+# Lancer :  docker compose -p jeux up -d --build
+services:
+
+  jeux_web:
+    container_name: jeux_web
+    image: jeux-leoderoin:latest
+    build:
+      context: .
+      # Ces valeurs partent dans les fichiers produits : elles doivent être
+      # connues à la CONSTRUCTION. Une NEXT_PUBLIC_SITE_URL fausse donne un
+      # site qui s'affiche parfaitement et se référence sur le mauvais domaine.
+      args:
+        NEXT_PUBLIC_SITE_URL: ${NEXT_PUBLIC_SITE_URL:-https://jeux.leoderoin.fr}
+        NEXT_PUBLIC_MATOMO_URL: ${NEXT_PUBLIC_MATOMO_URL:-}
+        NEXT_PUBLIC_MATOMO_SITE_ID: ${NEXT_PUBLIC_MATOMO_SITE_ID:-}
+        NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION: ${NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION:-}
+    ports:
+      # Lié à la boucle locale : le conteneur n'est joignable que par le proxy
+      # inverse installé sur la même machine. Sans ça, n'importe qui peut
+      # atteindre http://serveur:3006 et court-circuiter nginx — donc le TLS,
+      # la limitation de débit et les journaux d'accès.
+      - "127.0.0.1:${JEUX_HOST_PORT:-3006}:8080"
+    networks:
+      - jeux_network
+    restart: unless-stopped
+    # Le conteneur n'écrit rien : ni cache, ni journal sur disque, ni upload.
+    # Un système de fichiers en lecture seule ferme la porte à un dépôt de
+    # fichier par une faille de nginx. Les deux tmpfs sont les seuls chemins
+    # dont nginx a besoin en écriture.
+    read_only: true
+    # Seuls chemins dont nginx a besoin en écriture. La configuration, elle,
+    # est déjà écrite dans l'image : rien à générer au démarrage.
+    tmpfs:
+      - /tmp
+      - /var/cache/nginx
+    security_opt:
+      - no-new-privileges:true
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://127.0.0.1:8080/healthz"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+
+networks:
+  jeux_network:
+    name: jeux_network

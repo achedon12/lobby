@@ -1,0 +1,41 @@
+name: Idée
+description: Proposer une amélioration ou un jeu à ajouter
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Ce dépôt est un **panneau d'entrée** vers des jeux : il reste petit et
+        n'héberge aucun jeu. Les idées qui vont dans ce sens ont toutes leurs
+        chances ; celles qui en font une plateforme, beaucoup moins.
+  - type: textarea
+    id: problem
+    attributes:
+      label: Le problème
+      description: Qu'est-ce qui ne va pas aujourd'hui ? Le « pourquoi » avant le « quoi ».
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Ce que tu proposes
+    validations:
+      required: true
+  - type: dropdown
+    id: kind
+    attributes:
+      label: Nature
+      options:
+        - Ajouter un jeu au panneau
+        - Design ou ergonomie
+        - Traduction ou nouvelle langue
+        - Référencement ou performance
+        - Accessibilité
+        - Autre
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Ce que tu as envisagé d'autre
+      description: Facultatif, mais ça évite de refaire le tour.

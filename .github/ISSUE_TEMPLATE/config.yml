@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Faille de sécurité
+    url: https://github.com/achedon12/lobby/security/advisories/new
+    about: Ne jamais signaler une faille dans une issue publique — passe par un avis privé.
+  - name: Voir le site
+    url: https://jeux.leoderoin.fr
+    about: Le panneau en ligne.
+  - name: Un bug dans Push Your Luck
+    url: https://github.com/achedon12/pushYourLuck/issues
+    about: Ce dépôt ne contient pas les jeux — chacun a le sien.
