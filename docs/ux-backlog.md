@@ -242,3 +242,61 @@ haute d'une ligne. Raccourcir davantage reviendrait à retirer l'information que
 cette entrée sert justement à ajouter. Le retour à la ligne est propre, sans
 débordement horizontal, et les sept autres combinaisons langue/jeu tiennent sur
 une ligne.
+
+---
+
+## Deuxième série
+
+### [x] 9. La page 404 ne mène pas aux jeux
+
+**Le problème.** Un visiteur perdu reçoit quatre chemins de retour vers
+l'accueil — et rien d'autre. Or sur un panneau de jeux, l'accueil n'est pas la
+destination : les jeux le sont. On lui demande donc un clic de plus pour
+arriver là où il allait.
+
+**Ce qu'on fait.** Les deux jeux, avec leur domaine, directement sur la 404,
+au-dessus des retours par langue. Sans illustration : cette page doit rester
+légère, elle est servie à des gens qui n'ont rien demandé.
+
+**Vérification.** `curl /de/zzz` renvoie 404 et contient les deux domaines de
+jeux. La page reste sous sa taille actuelle à quelques kilo-octets près.
+
+**Fait.** Les deux jeux figurent au-dessus des retours par langue, avec leur
+domaine sous le nom — même convention que les tuiles de l'accueil. La 404 passe
+de 68 à 76 Ko, soit 8 Ko pour éviter un clic à quelqu'un qui vient de tomber
+sur un lien mort.
+
+Les noms sont ceux du dictionnaire français : la 404 est servie pour toutes les
+langues, et l'export statique n'en produit qu'une. Ce sont des noms propres,
+que le domaine désambiguïse de toute façon.
+
+---
+
+### [ ] 10. La barre d'adresse ne suit pas le thème forcé
+
+**Le problème.** `theme-color` est déclaré par requête média
+`prefers-color-scheme`. Un visiteur dont le système est en clair mais qui force
+le thème sombre garde une barre d'adresse crème autour d'une page sombre — la
+seule partie de l'interface qui ne suit pas son choix.
+
+**Ce qu'on fait.** Le script de thème, qui pose déjà `data-theme` avant le
+premier rendu, met aussi à jour la balise `theme-color` correspondante. Il doit
+rester minuscule et sans dépendance : il s'exécute avant tout le reste.
+
+**Vérification.** La balise change de valeur quand `data-theme` est posé, sans
+clignotement au chargement.
+
+---
+
+### [ ] 11. La langue active n'est signalée que par la couleur
+
+**Le problème.** Dans `FR · EN · ES · DE`, la langue courante se distingue par
+sa seule couleur — encre contre gris. Un visiteur daltonien ou un écran à
+faible contraste ne la voient pas. C'est le critère WCAG 1.4.1 : la couleur ne
+doit jamais être le seul porteur d'une information.
+
+**Ce qu'on fait.** Un second signal, non coloré, sur la langue active. Discret :
+l'en-tête vient d'être allégé, il ne s'agit pas de le réalourdir.
+
+**Vérification.** Capture en niveaux de gris : la langue active doit rester
+identifiable.

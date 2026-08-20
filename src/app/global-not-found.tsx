@@ -1,9 +1,10 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, ArrowUpRight } from 'lucide-react';
 import { BrandMark, BrandWordmark } from '@/components/BrandMark';
 import { ThemeScript } from '@/components/ThemeScript';
 import { display, sans } from '@/fonts';
+import { GAMES, gameHost } from '@/data/games';
 import { getDictionary } from '@/i18n';
 import { DEFAULT_LOCALE, LOCALES, LOCALE_NAMES } from '@/i18n/config';
 import { path } from '@/i18n/routes';
@@ -74,6 +75,40 @@ export default function GlobalNotFound() {
                     <p className="mt-3 text-lg text-fg-muted text-pretty">
                         {dictionary.notFound.body}
                     </p>
+
+                    {/* Les jeux AVANT les retours : sur un panneau de jeux,
+                        l'accueil n'est pas la destination, les jeux le sont.
+                        Renvoyer un visiteur perdu vers l'accueil lui demandait
+                        un clic de plus pour arriver là où il allait.
+
+                        Sans vignette : cette page est servie à des gens qui
+                        n'ont rien demandé, elle doit rester légère. */}
+                    <h2 className="mt-10 text-xs font-bold tracking-[0.12em] text-fg-muted uppercase">
+                        {dictionary.games.heading}
+                    </h2>
+                    <ul className="mt-2 flex flex-col divide-y divide-border-subtle border-y border-border-subtle">
+                        {GAMES.map((game) => (
+                            <li key={game.id}>
+                                <a
+                                    href={game.url}
+                                    className="group flex items-center justify-between gap-4 py-3.5 no-underline"
+                                >
+                                    <span className="flex flex-col">
+                                        <span className="font-[family-name:var(--font-display)] font-semibold text-fg">
+                                            {dictionary.games.items[game.id].name}
+                                        </span>
+                                        <span className="text-[0.7rem] text-fg-muted">
+                                            {gameHost(game)}
+                                        </span>
+                                    </span>
+                                    <ArrowUpRight
+                                        aria-hidden="true"
+                                        className="size-4 shrink-0 text-fg-muted transition-transform duration-200 group-hover:-translate-y-1 group-hover:translate-x-1"
+                                    />
+                                </a>
+                            </li>
+                        ))}
+                    </ul>
 
                     <ul className="mt-10 flex flex-col divide-y divide-border-subtle border-y border-border-subtle">
                         {returns.map((item) => (
