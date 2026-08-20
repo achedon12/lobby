@@ -83,11 +83,12 @@ Le sitemap, le JSON-LD et le compteur de la page suivent tout seuls.
       officiel le 20 août 2026. ⚠️ Un PDF « LORDHOSTING ASSOCIATION » de 2022
       circule encore avec une adresse à Vitry-sur-Seine : c'est l'ancienne
       structure, ne pas la reprendre.
-- [ ] **`NEXT_PUBLIC_MATOMO_SITE_ID=7`** — à confirmer. Avec cette valeur, la
-      requête de mesure a répondu **400** pendant l'audit, alors que la page
-      était servie depuis `127.0.0.1:3006`. À revérifier une fois le site sur
-      son vrai domaine : tant que la réponse est 400, rien n'est compté.
-- [ ] **`NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION`** — le jeton Search Console.
+- [x] **`NEXT_PUBLIC_MATOMO_SITE_ID=7`** — confirmé le 20 août 2026 en sondant
+      le serveur : `idsite=7` répond 200, un identifiant inexistant répond 400.
+      Le 400 observé pendant un audit antérieur ne se reproduit pas.
+- [x] **Jeton Search Console** posé dans `src/lib/site.ts`. Il reste à
+      ajouter la propriété dans Search Console, cliquer « Vérifier », puis
+      soumettre `https://jeux.leoderoin.fr/sitemap.xml`.
 - [ ] Relire les mentions légales et la page de confidentialité : elles
       décrivent une configuration Matomo **sans cookie**
       (`_paq.push(['disableCookies'])`, posé dans `src/components/Matomo.tsx`).

@@ -22,10 +22,21 @@ export const MATOMO = {
     siteId: process.env.NEXT_PUBLIC_MATOMO_SITE_ID ?? '',
 } as const;
 
-// Jeton de propriété Google Search Console. Vide = aucune balise émise, ce qui
-// est le bon défaut : une balise de vérification vide ou fausse fait échouer la
-// validation sans rien dire.
-export const GOOGLE_SITE_VERIFICATION = process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION ?? '';
+// Jeton de propriété Google Search Console. Ce n'est pas un secret : il ne
+// prouve la propriété qu'en étant affiché sur le site, et il est donc public
+// par construction — le versionner évite d'avoir à le reposer sur le serveur
+// à chaque reconstruction.
+//
+// Vide, aucune balise n'est émise : une balise de vérification fausse ou vide
+// fait échouer la validation sans rien dire.
+//
+// ⚠️ `||` et non `??` : Next charge le `.env` du projet, où une variable peut
+// être PRÉSENTE MAIS VIDE. `??` ne bascule que sur `undefined` — la balise
+// n'était pas émise alors que le jeton était bien dans le code. Avec `||`,
+// « absente » et « vide » se valent, et la valeur ci-dessous fait foi.
+export const GOOGLE_SITE_VERIFICATION =
+    process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION ||
+    'WFDl8y1b2cLJG4AJlRVOx0afnb8L08OXC3VhI6l8XYU';
 
 // La LCEN impose de nommer l'hébergeur du site dans les mentions légales, avec
 // son ADRESSE et son TÉLÉPHONE — le nom seul ne suffit pas.
@@ -39,12 +50,16 @@ export const GOOGLE_SITE_VERIFICATION = process.env.NEXT_PUBLIC_GOOGLE_SITE_VERI
 // désigne l'ANCIENNE structure : l'hébergeur est une SASU immatriculée en mai
 // 2026 à Paris. Les deux entités existent toujours au registre, et c'est
 // exactement le genre d'erreur qu'on ne voit jamais.
+//
+// `||` partout, même raison : une variable présente mais vide dans le `.env`
+// ferait afficher « — à renseigner — » sur des mentions légales alors que la
+// valeur juste est là, dans le code.
 export const HOST = {
-    name: process.env.NEXT_PUBLIC_HOST_NAME ?? 'LordHosting, SASU au capital de 1 000 €',
+    name: process.env.NEXT_PUBLIC_HOST_NAME || 'LordHosting, SASU au capital de 1 000 €',
     address:
-        process.env.NEXT_PUBLIC_HOST_ADDRESS ?? '5 square Frédéric Vallois, 75015 Paris, France',
-    phone: process.env.NEXT_PUBLIC_HOST_PHONE ?? '06 01 21 24 27',
-    registration: process.env.NEXT_PUBLIC_HOST_SIREN ?? '105 383 988 (RCS Paris)',
+        process.env.NEXT_PUBLIC_HOST_ADDRESS || '5 square Frédéric Vallois, 75015 Paris, France',
+    phone: process.env.NEXT_PUBLIC_HOST_PHONE || '06 01 21 24 27',
+    registration: process.env.NEXT_PUBLIC_HOST_SIREN || '105 383 988 (RCS Paris)',
 } as const;
 
 export const TO_FILL = '— à renseigner —';
