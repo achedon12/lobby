@@ -104,6 +104,57 @@
     --status-live-soft: #10291f;
 }
 
+/* ──────────────────────────────────────────────────────────────────────────
+   Contraste renforcé
+   Un visiteur qui demande plus de contraste au niveau système ne recevait
+   rien : le texte secondaire, volontairement doux, restait doux.
+
+   UNIQUEMENT des variables. Redéfinir des règles ici les ferait diverger de
+   leur version normale à la première retouche — et il y en a trois jeux à
+   tenir d'accord, un par état de thème.
+
+   Les valeurs de base vivent toutes sur `:root` plus haut : ces blocs ne font
+   que les remplacer, jamais les créer. Une couleur qui n'existerait qu'ici
+   disparaîtrait pour tout le monde.
+   ────────────────────────────────────────────────────────────────────────── */
+@media (prefers-contrast: more) {
+    :root {
+        --fg-muted: #443d52;
+        --border: #cbbfa4;
+        --border-strong: #a89871;
+        --game-gold: #7a5106;
+        --game-crimson: #96220f;
+        --status-live: #0b5c37;
+    }
+}
+
+/* Sombre par préférence système, contraste renforcé. Le sélecteur exclut le
+   clair FORCÉ, comme partout ailleurs dans ce fichier. */
+@media (prefers-contrast: more) and (prefers-color-scheme: dark) {
+    :root:not([data-theme='light']) {
+        --fg-muted: #d2ccdf;
+        --border: #4a3f66;
+        --border-strong: #6b5d90;
+        --game-gold: #ffd784;
+        --game-crimson: #ffa694;
+        --status-live: #7ef0be;
+    }
+}
+
+/* Sombre FORCÉ, contraste renforcé. Duplication volontaire : une règle @media
+   sur `prefers-color-scheme` ne s'applique pas quand la machine est en clair,
+   il faut donc une seconde source pour que le bouton l'emporte. */
+@media (prefers-contrast: more) {
+    :root[data-theme='dark'] {
+        --fg-muted: #d2ccdf;
+        --border: #4a3f66;
+        --border-strong: #6b5d90;
+        --game-gold: #ffd784;
+        --game-crimson: #ffa694;
+        --status-live: #7ef0be;
+    }
+}
+
 @theme inline {
     /* Palier supplémentaire : entre 320 et 640 px il reste de la place pour un
        lien de plus dans l'en-tête, mais pas à 320. Tailwind n'en fournit pas. */

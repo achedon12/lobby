@@ -176,7 +176,7 @@ performance ne régresse pas.
 
 ## P3 — finitions
 
-### [ ] 7. `prefers-contrast: more` n'est pas pris en compte
+### [x] 7. `prefers-contrast: more` n'est pas pris en compte
 
 **Le problème.** Le texte secondaire est volontairement doux. Un visiteur qui
 demande un contraste renforcé au niveau système ne reçoit rien de plus.
@@ -186,6 +186,27 @@ demande un contraste renforcé au niveau système ne reçoit rien de plus.
 pour ne pas dupliquer de règles.
 
 **Vérification.** Capture avec la fonctionnalité forcée dans le navigateur.
+
+**Fait.** Trois blocs, un par état de thème — clair, sombre système, sombre
+forcé — exactement comme la palette de base. Uniquement des **variables** : y
+redéfinir des règles les aurait fait diverger de leur version normale à la
+première retouche, avec trois jeux à tenir d'accord.
+
+Mesuré plutôt qu'apprécié à l'œil, le texte secondaire passe de :
+
+| | normal | renforcé |
+|---|---|---|
+| clair, sur papier | 5,51:1 | **9,74:1** |
+| sombre, sur fond | 7,75:1 | **12,54:1** |
+| or du jeu, sur panneau | 4,78:1 | **6,87:1** |
+
+Les deux premiers dépassent le seuil AAA de 7:1.
+
+**Limite de la vérification.** Chrome sans pilotage ne sait pas forcer
+`prefers-contrast`. La capture rejoue donc les valeurs du bloc clair en fin de
+cascade, sur une copie de la page réellement servie : elle prouve la palette,
+pas le déclenchement de la requête média. Celui-ci est vérifié par la présence
+des trois blocs dans le CSS servi.
 
 ---
 
