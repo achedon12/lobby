@@ -2,6 +2,7 @@ import type { MetadataRoute } from 'next';
 import { LOCALES } from '@/i18n/config';
 import { path, url, type RouteKey } from '@/i18n/routes';
 import { SITE_URL } from '@/lib/site';
+import { UPDATED } from '@/lib/updated';
 
 // `output: 'export'` traite les gestionnaires de route comme dynamiques par
 // défaut et refuse de construire. Cette ligne dit à Next de les évaluer une
@@ -27,8 +28,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
             LOCALES.map((locale) => [locale, `${SITE_URL}${path(key, locale)}`]),
         );
 
+        // `lastModified` vient de la table des dates de contenu, pas de
+        // l'horloge de construction : une date qui bouge à chaque déploiement
+        // sans qu'un mot ait changé finit par être ignorée par les moteurs.
+        const lastModified = new Date(`${UPDATED[key]}T00:00:00Z`);
+
         return LOCALES.map((locale) => ({
             url: url(key, locale, SITE_URL),
+            lastModified,
             changeFrequency: 'monthly' as const,
             priority,
             alternates: { languages },

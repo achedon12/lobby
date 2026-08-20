@@ -5,7 +5,7 @@ import { getDictionary } from '@/i18n';
 import type { Locale } from '@/i18n/config';
 import { format } from '@/i18n/format';
 import { path, type ContentKey } from '@/i18n/routes';
-import { UPDATED, formatUpdated } from '@/lib/legal';
+import { formatUpdated, shownUpdate } from '@/lib/updated';
 import { AUTHOR, HOST, TO_FILL } from '@/lib/site';
 
 // Une seule vue pour « à propos », « mentions légales » et « confidentialité » :
@@ -14,7 +14,7 @@ import { AUTHOR, HOST, TO_FILL } from '@/lib/site';
 export function TextPageView({ locale, routeKey }: { locale: Locale; routeKey: ContentKey }) {
     const dictionary = getDictionary(locale);
     const copy = dictionary[routeKey];
-    const updated = UPDATED[routeKey];
+    const updated = shownUpdate(routeKey);
 
     return (
         <article className="mx-auto w-full max-w-2xl px-4 py-12 sm:px-6 sm:py-16">

@@ -123,7 +123,8 @@ Ce qui est en place, et qu'il ne faut pas casser :
 
 - une balise `canonical` par langue, barre finale comprise ;
 - `hreflang` réciproques entre les quatre langues, plus `x-default` ;
-- `sitemap.xml` déclarant les alternatives de chaque URL ;
+- `sitemap.xml` avec `lastmod`, `changefreq` et `priority` sur chaque URL,
+  plus les alternatives de langue ;
 - JSON-LD `WebSite` + `ItemList` de `VideoGame`, prix zéro déclaré ;
 - Open Graph et Twitter Card avec une image 1200×630 **par langue** ;
 - `/fr/` redirigé en 301 vers `/`, pour ne jamais avoir deux fois la même page.
