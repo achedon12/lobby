@@ -99,6 +99,10 @@
 }
 
 @theme inline {
+    /* Palier supplémentaire : entre 320 et 640 px il reste de la place pour un
+       lien de plus dans l'en-tête, mais pas à 320. Tailwind n'en fournit pas. */
+    --breakpoint-xs: 30rem;
+
     --color-bg: var(--bg);
     --color-bg-elevated: var(--bg-elevated);
     --color-bg-sunken: var(--bg-sunken);

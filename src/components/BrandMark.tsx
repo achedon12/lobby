@@ -18,7 +18,16 @@ export function BrandMark({ className }: { className?: string }) {
 // domaine qui le porte en retrait. Le découpage se fait sur le premier point,
 // pas sur une seconde clé de dictionnaire — une clé « tête » et une clé
 // « queue » finiraient par se contredire à la traduction suivante.
-export function BrandWordmark({ brand, className }: { brand: string; className?: string }) {
+export function BrandWordmark({
+    brand,
+    className,
+    tailClassName,
+}: {
+    brand: string;
+    className?: string;
+    /** Sert à masquer le domaine sous une largeur donnée : voir l'en-tête. */
+    tailClassName?: string;
+}) {
     const dot = brand.indexOf('.');
     const head = dot === -1 ? brand : brand.slice(0, dot);
     const tail = dot === -1 ? '' : brand.slice(dot);
@@ -26,7 +35,7 @@ export function BrandWordmark({ brand, className }: { brand: string; className?:
     return (
         <span className={`font-[family-name:var(--font-display)] tracking-tight ${className ?? ''}`}>
             <span className="font-semibold">{head}</span>
-            <span className="font-medium text-fg-muted">{tail}</span>
+            <span className={`font-medium text-fg-muted ${tailClassName ?? ''}`}>{tail}</span>
         </span>
     );
 }

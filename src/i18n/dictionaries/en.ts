@@ -17,6 +17,7 @@ export const en: Dictionary = {
         navAbout: 'About',
         languageLabel: 'Language',
         themeLabel: 'Theme',
+        themeToggle: 'Theme: {mode}',
         themeSystem: 'System',
         themeLight: 'Light',
         themeDark: 'Dark',
@@ -134,7 +135,6 @@ export const en: Dictionary = {
     },
     footer: {
         madeBy: 'Built by Léo Deroin',
-        elsewhereHeading: 'Elsewhere',
         navLegal: 'Legal notice',
         navPrivacy: 'Privacy',
         siteHeading: 'The site',

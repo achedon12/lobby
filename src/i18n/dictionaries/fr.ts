@@ -20,6 +20,7 @@ export const fr = {
         navAbout: 'À propos',
         languageLabel: 'Langue',
         themeLabel: 'Thème',
+        themeToggle: 'Thème : {mode}',
         themeSystem: 'Système',
         themeLight: 'Clair',
         themeDark: 'Sombre',
@@ -140,7 +141,6 @@ export const fr = {
     },
     footer: {
         madeBy: 'Créé par Léo Deroin',
-        elsewhereHeading: 'Ailleurs',
         navLegal: 'Mentions légales',
         navPrivacy: 'Confidentialité',
         siteHeading: 'Le site',

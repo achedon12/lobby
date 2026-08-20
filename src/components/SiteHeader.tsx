@@ -16,38 +16,49 @@ export function SiteHeader({
     dictionary: Dictionary;
 }) {
     return (
-        <header className="sticky top-0 z-50 border-b-2 border-border-strong bg-bg/80 backdrop-blur-md">
-            <div className="mx-auto flex w-full max-w-4xl flex-wrap items-center gap-x-3 gap-y-2 px-4 py-2.5 sm:px-6">
-                {/* Le nom du site EST son adresse : ce n'est pas la page de
-                    quelqu'un, c'est un panneau de jeux. La signature vit dans le
-                    pied de page, là où la paternité a sa place. */}
+        // Un simple filet, sans fond ni flou : la barre translucide se voyait
+        // plus que ce qu'elle contient, et elle coupait la page en deux au
+        // repos. Ici l'en-tête ne se remarque qu'au moment où on la cherche.
+        <header className="sticky top-0 z-50 border-b border-border-subtle bg-bg/90 backdrop-blur-sm">
+            <div className="mx-auto flex w-full max-w-4xl items-center gap-4 px-4 py-3 sm:px-6">
                 <Link
                     href={path('home', locale)}
                     aria-current={routeKey === 'home' ? 'page' : undefined}
-                    className="group flex items-center gap-2.5 text-fg no-underline"
+                    className="group flex shrink-0 items-center gap-2.5 text-fg no-underline"
                 >
-                    <BrandMark className="size-8 shrink-0 transition-transform duration-200 group-hover:-translate-y-0.5" />
-                    <BrandWordmark brand={dictionary.header.brand} className="text-base sm:text-lg" />
+                    <BrandMark className="size-7 shrink-0 transition-transform duration-200 group-hover:-translate-y-0.5" />
+                    {/* Sous 640 px, la signature se réduit à sa moitié utile :
+                        « jeux ». Le domaine complet, les quatre langues et le
+                        bouton de thème ne tiennent pas ensemble à 320 px — et
+                        c'est le domaine qu'on peut se permettre de perdre. */}
+                    <BrandWordmark
+                        brand={dictionary.header.brand}
+                        className="text-[0.95rem]"
+                        tailClassName="hidden sm:inline"
+                    />
                 </Link>
 
-                {/* `ml-auto` plutôt qu'un `justify-between` : quand la ligne
-                    passe en deux rangées sous 420 px, les contrôles se calent à
-                    gauche au lieu de s'étirer bizarrement sur toute la largeur. */}
-                <nav
-                    aria-label={dictionary.header.navLabel}
-                    className="ml-auto flex items-center gap-1"
-                >
-                    <Link
-                        href={path('about', locale)}
-                        aria-current={routeKey === 'about' ? 'page' : undefined}
-                        className="rounded-full px-3 py-1.5 text-sm font-medium text-fg-muted no-underline transition-colors hover:bg-bg-sunken hover:text-fg aria-[current=page]:bg-bg-sunken aria-[current=page]:text-fg"
-                    >
-                        {dictionary.header.navAbout}
-                    </Link>
-                </nav>
+                {/* Les contrôles pesaient plus que la marque : trois groupes,
+                    sept objets cliquables, chacun dans sa pastille. Ils sont
+                    maintenant nus et alignés sur une seule ligne, séparés par
+                    un filet. Rien ne se replie sous 320 px. */}
+                <div className="ml-auto flex items-center gap-3 sm:gap-4">
+                    {/* Masquée sous 480 px : la page « à propos » reste
+                        atteignable depuis le pied de page, présent partout. */}
+                    <nav aria-label={dictionary.header.navLabel} className="hidden xs:block">
+                        <Link
+                            href={path('about', locale)}
+                            aria-current={routeKey === 'about' ? 'page' : undefined}
+                            className="text-sm text-fg-muted no-underline transition-colors hover:text-fg aria-[current=page]:font-medium aria-[current=page]:text-fg"
+                        >
+                            {dictionary.header.navAbout}
+                        </Link>
+                    </nav>
 
-                <div className="flex items-center gap-1.5">
+                    <span aria-hidden="true" className="hidden h-4 w-px bg-border-subtle xs:block" />
+
                     <LocaleSwitcher locale={locale} routeKey={routeKey} dictionary={dictionary} />
+
                     <ThemeToggle dictionary={dictionary} />
                 </div>
             </div>
