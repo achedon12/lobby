@@ -26,7 +26,7 @@ export const es: Dictionary = {
     hero: {
         eyebrow: 'Directorio',
         title: 'Juegos en línea gratis',
-        tagline: 'Dos juegos, jugables ahora mismo en el navegador.',
+        tagline: 'Juegos para jugar ahora mismo en el navegador, sin instalar nada.',
         countLabel: '{count} juegos en línea',
     },
     games: {
@@ -34,6 +34,16 @@ export const es: Dictionary = {
         statusBeta: 'En beta',
         statusSoon: 'Próximamente',
         items: {
+            azimut: {
+                name: 'Azimut',
+                facts: [
+                    'Solo',
+                    'Cada día',
+                    'Sin cuenta',
+                ],
+                description:
+                    'Adivina el país del día solo por su silueta. Cada intento te indica a qué distancia está y en qué dirección: seis oportunidades para acercarte. La misma partida para todos, cada día, sin registro y sin publicidad.',
+            },
             'push-your-luck': {
                 name: 'Push Your Luck',
                 facts: [

@@ -26,7 +26,7 @@ export const de: Dictionary = {
     hero: {
         eyebrow: 'Verzeichnis',
         title: 'Kostenlose Onlinespiele',
-        tagline: 'Zwei Spiele, sofort im Browser spielbar.',
+        tagline: 'Spiele, die sofort im Browser laufen — ohne Installation.',
         countLabel: '{count} Spiele online',
     },
     games: {
@@ -34,6 +34,16 @@ export const de: Dictionary = {
         statusBeta: 'In der Beta',
         statusSoon: 'Demnächst',
         items: {
+            azimut: {
+                name: 'Azimut',
+                facts: [
+                    'Solo',
+                    'Täglich',
+                    'Ohne Konto',
+                ],
+                description:
+                    'Errate das Land des Tages allein an seiner Silhouette. Jeder Versuch verrät Entfernung und Richtung: sechs Anläufe, um näher zu kommen. Für alle dasselbe Rätsel, jeden Tag, ohne Anmeldung und ohne Werbung.',
+            },
             'push-your-luck': {
                 name: 'Push Your Luck',
                 facts: [

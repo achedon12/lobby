@@ -228,7 +228,101 @@ function LoupsGarousArt() {
     );
 }
 
+function AzimutArt() {
+    // Les cercles de distance du cadran. Quatre paliers, comme dans le jeu.
+    const rings = [26, 48, 70, 92];
+
+    return (
+        <svg viewBox="0 0 400 240" aria-hidden="true" className="size-full">
+            <defs>
+                <linearGradient id="azSky" x1="0" y1="0" x2="0.5" y2="1">
+                    <stop offset="0" stopColor="#0d2137" />
+                    <stop offset="1" stopColor="#04090f" />
+                </linearGradient>
+                <radialGradient id="azWell" cx="0.5" cy="0.5" r="0.5">
+                    <stop offset="0" stopColor="#4cc9f0" stopOpacity="0.30" />
+                    <stop offset="0.55" stopColor="#4cc9f0" stopOpacity="0.10" />
+                    <stop offset="1" stopColor="#4cc9f0" stopOpacity="0" />
+                </radialGradient>
+                <linearGradient id="azBeam" x1="0" y1="0" x2="1" y2="0.4">
+                    <stop offset="0" stopColor="#4cc9f0" stopOpacity="0.42" />
+                    <stop offset="1" stopColor="#4cc9f0" stopOpacity="0" />
+                </linearGradient>
+                <radialGradient id="azVignette" cx="0.5" cy="0.5" r="0.72">
+                    <stop offset="0.55" stopColor="#000000" stopOpacity="0" />
+                    <stop offset="1" stopColor="#000000" stopOpacity="0.55" />
+                </radialGradient>
+                <filter id="azHalo" x="-60%" y="-60%" width="220%" height="220%">
+                    <feGaussianBlur stdDeviation="6" />
+                </filter>
+            </defs>
+
+            <rect width="400" height="240" fill="url(#azSky)" />
+
+            {/* Quelques étoiles, très discrètes : le ciel plat faisait carton. */}
+            {[[38, 40], [92, 26], [318, 34], [366, 62], [58, 196], [352, 190]].map(([x, y]) => (
+                <circle key={`${x}-${y}`} cx={x} cy={y} r="1.1" fill="#cfe6f5" opacity="0.5" />
+            ))}
+
+            <g transform="translate(200 120)">
+                <circle r="100" fill="url(#azWell)" />
+
+                {rings.map((r) => (
+                    <circle
+                        key={r}
+                        r={r}
+                        fill="none"
+                        stroke="#4cc9f0"
+                        strokeOpacity={r === 92 ? 0.45 : 0.2}
+                        strokeWidth={r === 92 ? 1.4 : 0.9}
+                    />
+                ))}
+                <line x1="0" y1="-92" x2="0" y2="92" stroke="#4cc9f0" strokeOpacity="0.16" strokeWidth="0.9" />
+                <line x1="-92" y1="0" x2="92" y2="0" stroke="#4cc9f0" strokeOpacity="0.16" strokeWidth="0.9" />
+
+                {/* Le faisceau, figé : une illustration ne tourne pas, et une
+                    animation ici tirerait l'œil hors du titre du jeu. */}
+                <path d="M0 0 L0 -92 A92 92 0 0 1 62 -68 Z" fill="url(#azBeam)" />
+                <line x1="0" y1="0" x2="0" y2="-92" stroke="#4cc9f0" strokeOpacity="0.6" strokeWidth="1.2" />
+
+                {/* Une silhouette générique, pas un pays reconnaissable : la
+                    vignette ne doit rien dévoiler de la partie du jour. */}
+                <g>
+                    <path
+                        d="M-16 -40 L6 -44 L20 -30 L16 -12 L28 2 L22 22 L4 34 L-14 28 L-24 10 L-18 -8 L-26 -22 Z"
+                        fill="#4cc9f0"
+                        opacity="0.5"
+                        filter="url(#azHalo)"
+                    />
+                    <path
+                        d="M-16 -40 L6 -44 L20 -30 L16 -12 L28 2 L22 22 L4 34 L-14 28 L-24 10 L-18 -8 L-26 -22 Z"
+                        fill="#e8f4fb"
+                    />
+                </g>
+
+                {/* Deux relevés, chacun relié au centre : c'est la mécanique du
+                    jeu en un coup d'œil — une distance et un cap. */}
+                {[
+                    { x: -74, y: -44, c: '#f2604a' },
+                    { x: 54, y: 58, c: '#e0b64a' },
+                ].map((b) => (
+                    <g key={b.c}>
+                        <line x1="0" y1="0" x2={b.x} y2={b.y} stroke={b.c} strokeOpacity="0.4" strokeWidth="1" />
+                        <circle cx={b.x} cy={b.y} r="8" fill={b.c} opacity="0.45" filter="url(#azHalo)" />
+                        <circle cx={b.x} cy={b.y} r="3.6" fill={b.c} />
+                    </g>
+                ))}
+
+                <text x="0" y="-104" textAnchor="middle" fill="#7d92a8" fontSize="10" fontFamily="ui-monospace, monospace" letterSpacing="1.5">N</text>
+            </g>
+
+            <rect width="400" height="240" fill="url(#azVignette)" />
+        </svg>
+    );
+}
+
 const ART: Record<GameKey, () => JSX.Element> = {
+    azimut: AzimutArt,
     'push-your-luck': PushYourLuckArt,
     'loups-garous': LoupsGarousArt,
 };

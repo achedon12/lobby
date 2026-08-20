@@ -25,7 +25,7 @@ export const en: Dictionary = {
     hero: {
         eyebrow: 'Directory',
         title: 'Free online games',
-        tagline: 'Two games, playable right now in your browser.',
+        tagline: 'Games you can play right now in your browser, nothing to install.',
         countLabel: '{count} games online',
     },
     games: {
@@ -33,6 +33,16 @@ export const en: Dictionary = {
         statusBeta: 'In beta',
         statusSoon: 'Coming soon',
         items: {
+            azimut: {
+                name: 'Azimut',
+                facts: [
+                    'Solo',
+                    'Daily',
+                    'No account',
+                ],
+                description:
+                    'Guess the country of the day from its outline alone. Every guess tells you how far away it is and which way to head: six tries to close in. The same puzzle for everyone, every day, with no sign-up and no ads.',
+            },
             'push-your-luck': {
                 name: 'Push Your Luck',
                 facts: [

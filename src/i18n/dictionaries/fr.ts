@@ -28,7 +28,7 @@ export const fr = {
     hero: {
         eyebrow: 'Annuaire',
         title: 'Jeux en ligne gratuits',
-        tagline: 'Deux jeux, jouables tout de suite dans le navigateur.',
+        tagline: 'Des jeux jouables tout de suite dans le navigateur, sans rien installer.',
         countLabel: '{count} jeux en ligne',
     },
     games: {
@@ -36,6 +36,16 @@ export const fr = {
         statusBeta: 'En bêta',
         statusSoon: 'Bientôt',
         items: {
+            azimut: {
+                name: 'Azimut',
+                facts: [
+                    'Solo',
+                    'Chaque jour',
+                    'Sans compte',
+                ],
+                description:
+                    'Devinez le pays du jour à sa seule silhouette. Chaque proposition vous donne la distance qui vous en sépare et le cap à suivre : six essais pour converger. La même partie pour tout le monde, chaque jour, sans inscription et sans publicité.',
+            },
             'push-your-luck': {
                 name: 'Push Your Luck',
                 facts: [

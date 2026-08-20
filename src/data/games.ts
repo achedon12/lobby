@@ -5,12 +5,12 @@ export type GameStatus = 'live' | 'beta' | 'soon';
 // Clé d'accent, pas une couleur : la valeur vit dans `globals.css`, où elle a
 // une variante par thème. Un code hexadécimal posé ici serait juste dans un
 // seul des trois états.
-export type GameAccent = 'gold' | 'crimson';
+export type GameAccent = 'gold' | 'crimson' | 'azure';
 
 // Clé d'icône, pas un composant : ce module est de la donnée pure et doit
 // pouvoir être importé par le sitemap ou un script Node, qui ne savent rien de
 // React. La correspondance se fait dans `components/GameIcon.tsx`.
-export type GameIconKey = 'spade' | 'moon';
+export type GameIconKey = 'spade' | 'moon' | 'compass';
 
 export type Game = {
     /** Doit exister dans `games.items` des dictionnaires : le type le garantit. */
@@ -27,6 +27,14 @@ export type Game = {
 // arbitraire : c'est le plus abouti qui ouvre, puisque c'est celui qui a le
 // plus de chances de retenir un visiteur venu d'un moteur de recherche.
 export const GAMES: readonly Game[] = [
+    {
+        id: 'azimut',
+        url: 'https://azimut.leoderoin.fr',
+        status: 'live',
+        accent: 'azure',
+        icon: 'compass',
+        year: 2026,
+    },
     {
         id: 'push-your-luck',
         url: 'https://pushyourluck.net',
