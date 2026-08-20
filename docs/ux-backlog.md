@@ -323,3 +323,56 @@ liens inactifs n'en reçoivent pas, y compris au survol, sinon le repère « vou
 Vérifié en niveaux de gris — `FR` reste identifiable par son trait seul. La
 capture a été prise en couleur puis désaturée avec sharp : Chrome refusait de
 rendre la page en `file://` avec un filtre CSS, et le résultat est équivalent.
+
+---
+
+## Troisième série
+
+### [x] 12. Le sélecteur de langue s'annonce deux fois
+
+**Le problème.** Chaque lien porte un `title` ET un texte `sr-only` disant la
+même chose. Un lecteur d'écran annonce donc « Français, Français ». Le `title`
+sert au survol souris ; le `sr-only` donne le nom complet là où l'on ne voit
+que « FR ». Les deux se justifient séparément, pas ensemble.
+
+**Ce qu'on fait.** Un seul porteur du nom de la langue. Le `sr-only` reste,
+puisqu'il est le nom accessible ; le `title` disparaît — l'infobulle qu'il
+donnait répète un texte déjà lisible.
+
+**Vérification.** Plus aucun `title` dans le sélecteur, et le nom complet de
+chaque langue toujours présent dans le HTML servi.
+
+**Fait.** Le `title` est retiré, le `sr-only` reste : c'est lui qui porte le nom
+accessible, quand l'infobulle ne faisait que répéter un texte déjà lisible.
+Vérifié : 0 `title` dans le sélecteur, et les quatre noms complets toujours
+servis.
+
+---
+
+### [ ] 13. Les pages légales ne portent pas de date
+
+**Le problème.** Des mentions légales et une politique de confidentialité sans
+date de mise à jour n'ont pas de valeur de preuve : un visiteur ne sait pas
+quelle version il lit, et l'éditeur ne peut pas démontrer ce qui était affiché
+à une date donnée.
+
+**Ce qu'on fait.** Une date de dernière mise à jour sur ces deux pages, tenue
+dans le code à côté du texte qu'elle date. Pas de date de construction : elle
+changerait à chaque déploiement et ne voudrait rien dire.
+
+**Vérification.** La date apparaît sur les quatre versions de chaque page, et
+ne bouge pas d'une construction à l'autre.
+
+---
+
+### [ ] 14. Rien n'indique où l'on est dans les pages de texte
+
+**Le problème.** Sur « Mentions légales », l'en-tête ne marque que « À propos »
+comme lien de navigation — aucune des trois pages de texte ne se signale comme
+courante. Le visiteur n'a que le titre de la page pour se situer.
+
+**Ce qu'on fait.** Marquer la page courante quand elle est atteignable depuis
+la navigation visible, et ne rien inventer pour celles qui ne le sont pas.
+
+**Vérification.** `aria-current="page"` posé sur le bon lien, et un repère
+visuel non coloré comme pour la langue active.

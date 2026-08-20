@@ -40,7 +40,11 @@ export function LocaleSwitcher({
                                 hrefLang={candidate}
                                 lang={candidate}
                                 aria-current={active ? 'true' : undefined}
-                                title={LOCALE_NAMES[candidate]}
+                                // Pas de `title` : il répétait mot pour mot le
+                                // texte `sr-only` ci-dessous, et un lecteur
+                                // d'écran annonçait « Français, Français ». Le
+                                // `sr-only` est celui des deux qui porte le nom
+                                // accessible, c'est donc lui qui reste.
                                 // La cible utile faisait ~20 px de haut : lisible
                                 // à la souris, hasardeuse au pouce, et sous les
                                 // 24 px de la règle WCAG 2.2. Elle est élargie
