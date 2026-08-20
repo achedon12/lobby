@@ -12,7 +12,8 @@
     "check": "npm run typecheck && npm run lint && npm run build",
     "fonts": "cp node_modules/@fontsource-variable/fredoka/files/fredoka-latin-wght-normal.woff2 node_modules/@fontsource-variable/outfit/files/outfit-latin-wght-normal.woff2 src/fonts/",
     "nginx": "tsx scripts/gen-nginx-redirects.mts",
-    "prebuild": "tsx scripts/gen-nginx-redirects.mts"
+    "prebuild": "tsx scripts/gen-nginx-redirects.mts",
+    "postbuild": "tsx scripts/prune-export.mts"
   },
   "dependencies": {
     "lucide-react": "^1.33.0",

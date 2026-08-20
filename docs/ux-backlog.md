@@ -31,7 +31,7 @@ défile vraiment — le titre s'arrête bien sous la barre.
 
 ---
 
-### [ ] 2. La page 404 est en français quoi qu'il arrive
+### [x] 2. La page 404 est en français quoi qu'il arrive
 
 **Le problème.** L'export statique produit une seule `404.html`, rendue en
 français. Un visiteur allemand qui suit un lien mort vers `/de/quelquechose`
@@ -44,6 +44,17 @@ rester utile sans script.
 
 **Vérification.** `curl /de/zzz` renvoie 404 et la page contient un chemin de
 retour vers `/de/`.
+
+**Fait.** Le diagnostic était plus profond que l'entrée ne le disait : la page
+servie n'était pas la nôtre du tout. Avec deux layouts racine, un
+`not-found.tsx` de groupe n'est jamais promu en `out/404.html` — Next y mettait
+SA page d'erreur intégrée, et notre version ne vivait que sous `/404/` et
+`/_not-found/`, deux adresses que personne n'atteint. Il fallait
+`global-not-found.tsx` et le drapeau `experimental.globalNotFound`.
+
+Au passage : ces deux adresses répondaient **200**, donc une page « introuvable »
+indexable. `npm run build` les élague désormais (`scripts/prune-export.mts`) —
+un fichier absent ne peut pas être servi par erreur.
 
 ---
 

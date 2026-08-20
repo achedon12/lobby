@@ -35,6 +35,12 @@ const nextConfig: NextConfig = {
         // requête : mesuré par Lighthouse, c'est le principal poste du délai
         // de rendu du <h1>, qui est l'élément LCP de la page.
         inlineCss: true,
+
+        // Sans ce drapeau, `global-not-found.tsx` est ignoré et `out/404.html`
+        // reste la page d'erreur INTÉGRÉE de Next. Le projet a deux layouts
+        // racine (groupes `(default)` et `(prefixed)`), donc aucun
+        // `not-found.tsx` de groupe ne peut tenir ce rôle.
+        globalNotFound: true,
     },
 };
 
