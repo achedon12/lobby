@@ -1,4 +1,5 @@
-import type { Game } from '@/data/games';
+import { ArrowUpRight } from 'lucide-react';
+import { gameHost, type Game } from '@/data/games';
 import type { Dictionary } from '@/i18n';
 import { GameArt } from './GameArt';
 
@@ -18,6 +19,8 @@ export function GameCard({
     tilt: number;
 }) {
     const copy = dictionary.games.items[game.id];
+    const host = gameHost(game);
+    const destinationId = `destination-${game.id}`;
 
     // Un jeu en ligne ne porte AUCUN badge : c'est le cas normal, et l'annoncer
     // sur chaque tuile ne fait qu'ajouter du bruit. Seule une exception mérite
@@ -46,25 +49,41 @@ export function GameCard({
                 )}
             </div>
 
-            {/* Le nom et une ligne, rien d'autre. La description complète vit
-                dans le JSON-LD : elle sert aux moteurs, pas au visiteur, qui a
-                déjà l'illustration sous les yeux. */}
             {/* Filet à la couleur du jeu entre l'image et le texte : il relie
                 les deux moitiés de la tuile, que la vignette sombre et le
                 panneau clair sépareraient sinon nettement. */}
             <span aria-hidden="true" className="h-1 w-full bg-[var(--card-accent)]" />
 
+            {/* Le nom, une ligne de catégorie, la destination. La description
+                complète vit dans le JSON-LD : elle sert aux moteurs, pas au
+                visiteur, qui a déjà l'illustration sous les yeux. */}
             <div className="flex flex-col gap-0.5 bg-[var(--card-accent-soft)]/40 px-4 py-3.5">
                 <h3 className="text-lg leading-tight font-semibold">
                     <a
                         href={game.url}
+                        aria-describedby={destinationId}
                         className="card-link text-fg no-underline outline-none group-hover:text-[var(--card-accent)]"
                     >
                         {copy.name}
                     </a>
                 </h3>
-                <p className="text-[0.7rem] font-bold tracking-wide text-fg-muted uppercase">
-                    {copy.tagline}
+                {/* La seule action de la page emmène ailleurs, et rien ne le
+                    disait. Le domaine l'annonce — une information, pas un
+                    avertissement : il reste discret.
+
+                    Rattaché en `aria-describedby` et non ajouté au nom
+                    accessible : un lecteur d'écran annonce « Push Your Luck,
+                    pushyourluck.net », et le nom continue de correspondre au
+                    texte affiché. */}
+                <p className="flex flex-wrap items-center justify-between gap-x-3 text-[0.7rem] font-bold tracking-wide text-fg-muted uppercase">
+                    <span>{copy.tagline}</span>
+                    <span
+                        id={destinationId}
+                        className="inline-flex items-center gap-0.5 tracking-normal normal-case text-fg-muted/80"
+                    >
+                        {host}
+                        <ArrowUpRight aria-hidden="true" className="size-3" />
+                    </span>
                 </p>
             </div>
         </article>

@@ -58,7 +58,7 @@ un fichier absent ne peut pas être servi par erreur.
 
 ---
 
-### [ ] 3. Rien ne dit qu'une tuile quitte le site
+### [x] 3. Rien ne dit qu'une tuile quitte le site
 
 **Le problème.** Cliquer une tuile emmène sur `pushyourluck.net`. Aucun
 repère ne l'annonce : ni icône, ni domaine, ni mention. C'est la seule action
@@ -70,6 +70,16 @@ avertissement.
 
 **Vérification.** Le domaine est lisible sur chaque tuile ; le nom accessible
 du lien mentionne la destination.
+
+**Fait.** Le domaine est affiché à droite de la catégorie, avec une flèche
+sortante, et il est DÉRIVÉ de `url` (`gameHost()`) — deux champs à tenir
+d'accord auraient fini par diverger, et c'est l'affichage qui aurait menti sur
+la destination réelle.
+
+Rattaché par `aria-describedby` plutôt qu'ajouté au nom accessible : un lecteur
+d'écran annonce « Push Your Luck, pushyourluck.net », et le nom continue de
+correspondre au texte affiché. Vérifié en 1000 et en 320 px, la ligne ne se
+casse pas.
 
 ---
 

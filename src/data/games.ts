@@ -46,3 +46,12 @@ export const GAMES: readonly Game[] = [
 ];
 
 export const LIVE_GAMES_COUNT = GAMES.filter((game) => game.status === 'live').length;
+
+/**
+ * Le domaine de destination, sans `www.`. Dérivé de `url` plutôt que saisi à
+ * côté : deux champs à tenir d'accord finissent toujours par diverger, et
+ * c'est l'affichage qui mentirait sur la destination réelle du lien.
+ */
+export function gameHost(game: Game): string {
+    return new URL(game.url).hostname.replace(/^www\./, '');
+}
