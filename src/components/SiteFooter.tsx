@@ -5,6 +5,7 @@ import type { Locale } from '@/i18n/config';
 import { format } from '@/i18n/format';
 import { path } from '@/i18n/routes';
 import { APP_VERSION, AUTHOR } from '@/lib/site';
+import { BrandMark, BrandWordmark } from './BrandMark';
 import { GithubMark } from './GithubMark';
 
 const linkClass =
@@ -17,9 +18,10 @@ export function SiteFooter({ locale, dictionary }: { locale: Locale; dictionary:
         <footer className="mt-auto border-t-2 border-border-strong bg-bg-sunken">
             <div className="mx-auto grid w-full max-w-4xl gap-8 px-4 py-10 sm:grid-cols-[1.6fr_1fr_1fr] sm:px-6">
                 <div className="flex flex-col gap-1.5">
-                    <p className="font-[family-name:var(--font-display)] text-base font-semibold">
-                        {dictionary.header.brand}
-                    </p>
+                    <div className="flex items-center gap-2.5">
+                        <BrandMark className="size-7 shrink-0" />
+                        <BrandWordmark brand={dictionary.header.brand} className="text-base" />
+                    </div>
                     <p className="max-w-xs text-sm text-fg-muted text-pretty">
                         {dictionary.footer.rights}
                     </p>

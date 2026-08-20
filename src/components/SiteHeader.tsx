@@ -1,8 +1,8 @@
 import Link from 'next/link';
-import { Gamepad2 } from 'lucide-react';
 import type { Dictionary } from '@/i18n';
 import type { Locale } from '@/i18n/config';
 import { path, type RouteKey } from '@/i18n/routes';
+import { BrandMark, BrandWordmark } from './BrandMark';
 import { LocaleSwitcher } from './LocaleSwitcher';
 import { ThemeToggle } from './ThemeToggle';
 
@@ -26,15 +26,8 @@ export function SiteHeader({
                     aria-current={routeKey === 'home' ? 'page' : undefined}
                     className="group flex items-center gap-2.5 text-fg no-underline"
                 >
-                    <span
-                        aria-hidden="true"
-                        className="flex size-8 items-center justify-center rounded-lg bg-accent text-accent-contrast transition-transform duration-200 group-hover:-rotate-6"
-                    >
-                        <Gamepad2 className="size-[1.1rem]" strokeWidth={2.2} />
-                    </span>
-                    <span className="font-[family-name:var(--font-display)] text-base font-semibold tracking-tight sm:text-lg">
-                        {dictionary.header.brand}
-                    </span>
+                    <BrandMark className="size-8 shrink-0 transition-transform duration-200 group-hover:-translate-y-0.5" />
+                    <BrandWordmark brand={dictionary.header.brand} className="text-base sm:text-lg" />
                 </Link>
 
                 {/* `ml-auto` plutôt qu'un `justify-between` : quand la ligne

@@ -16,11 +16,11 @@ export function HomeView({ locale }: { locale: Locale }) {
             {/* En-tête de page volontairement COURT : sur un annuaire, chaque
                 ligne de texte avant la grille repousse les jeux hors de l'écran,
                 et ce sont eux qu'on vient voir. */}
-            <section className="mx-auto w-full max-w-4xl px-4 pt-10 pb-7 text-center sm:px-6 sm:pt-14 sm:pb-9">
+            <section className="mx-auto w-full max-w-4xl px-4 pt-10 pb-7 sm:px-6 sm:pt-14 sm:pb-9">
                 <h1 className="text-2xl leading-tight font-semibold text-balance sm:text-3xl">
                     {dictionary.hero.title}
                 </h1>
-                <p className="mt-2 flex flex-wrap items-center justify-center gap-x-2.5 gap-y-1 text-sm text-fg-muted">
+                <p className="mt-2 flex flex-wrap items-center gap-x-2.5 gap-y-1 text-sm text-fg-muted">
                     <span>{dictionary.hero.tagline}</span>
                     <span aria-hidden="true" className="text-border-strong">
                         ·
@@ -48,7 +48,7 @@ export function HomeView({ locale }: { locale: Locale }) {
                     trou béant à droite, et à quatre jeux une grille en deux
                     colonnes serait à l'étroit. Ici les tuiles gardent leur
                     taille et restent centrées, quel que soit leur nombre. */}
-                <ul className="grid grid-cols-[repeat(auto-fit,minmax(15rem,22rem))] justify-center gap-5 sm:gap-6">
+                <ul className="grid grid-cols-[repeat(auto-fit,minmax(15rem,22rem))] gap-5 sm:gap-6">
                     {GAMES.map((game, index) => (
                         <li key={game.id} className="flex">
                             <GameCard

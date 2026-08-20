@@ -86,9 +86,7 @@ function buildSvg(dictionary: typeof fr): string {
     <pattern id="dots" width="26" height="26" patternUnits="userSpaceOnUse">
       <circle cx="2" cy="2" r="1.8" fill="#1b1526" opacity="0.07"/>
     </pattern>
-    <linearGradient id="mark" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#8f74ff"/><stop offset="1" stop-color="#4c2fd6"/>
-    </linearGradient>
+
     <linearGradient id="pylSky" x1="0" y1="0" x2="0.6" y2="1">
       <stop offset="0" stop-color="#2b1f57"/><stop offset="1" stop-color="#0c0918"/>
     </linearGradient>
@@ -110,14 +108,15 @@ function buildSvg(dictionary: typeof fr): string {
 
   <rect width="1200" height="630" fill="#fdf8ec"/>
   <rect width="1200" height="630" fill="url(#dots)"/>
-  <rect y="612" width="1200" height="18" fill="#6d3ce0"/>
+  <rect y="612" width="1200" height="18" fill="#17131f"/>
 
   <g transform="translate(84 74)">
-    <rect width="76" height="76" rx="19" fill="url(#mark)"/>
-    <g transform="translate(14 14) scale(2)" fill="none" stroke="#ffffff" stroke-width="1.8"
-       stroke-linecap="round" stroke-linejoin="round">
-      <path d="M6 11h4"/><path d="M8 9v4"/><path d="M15 12h.01"/><path d="M18 10h.01"/>
-      <path d="M17.32 5H6.68a4 4 0 0 0-3.978 3.59c-.006.052-.01.101-.017.152C2.604 9.416 2 14.456 2 16a3 3 0 0 0 3 3c1 0 1.5-.5 2-1l1.414-1.414A2 2 0 0 1 9.828 16h4.344a2 2 0 0 1 1.414.586L17 18c.5.5 1 1 2 1a3 3 0 0 0 3-3c0-1.545-.604-6.584-.685-7.258a4 4 0 0 0-3.995-3.742z"/>
+    <g transform="scale(1.1875)">
+      <rect width="64" height="64" rx="15" fill="#17131f"/>
+      <rect x="16" y="16" width="14" height="14" rx="4" fill="#fdf8ec"/>
+      <rect x="34" y="16" width="14" height="14" rx="4" fill="#fdf8ec"/>
+      <rect x="16" y="34" width="14" height="14" rx="4" fill="#fdf8ec"/>
+      <circle cx="41" cy="41" r="7" fill="#fdf8ec"/>
     </g>
   </g>
 
@@ -129,7 +128,7 @@ ${card(86, 268, -3, 'clipA', PUSH_YOUR_LUCK_ART, dictionary.games.items['push-yo
 ${card(432, 292, 3, 'clipB', LOUPS_GAROUS_ART, dictionary.games.items['loups-garous'].name)}
 
   <text x="840" y="392" font-family="${FONT}" font-size="30" font-weight="bold"
-        fill="#6d3ce0" letter-spacing="0.5">jeux.leoderoin.fr</text>
+        fill="#17131f" letter-spacing="0.5">jeux.leoderoin.fr</text>
   <text x="840" y="436" font-family="${FONT}" font-size="24" fill="#8b8299">${escapeXml(dictionary.hero.eyebrow)}</text>
 </svg>`;
 }
