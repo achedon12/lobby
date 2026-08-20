@@ -272,7 +272,7 @@ que le domaine désambiguïse de toute façon.
 
 ---
 
-### [ ] 10. La barre d'adresse ne suit pas le thème forcé
+### [x] 10. La barre d'adresse ne suit pas le thème forcé
 
 **Le problème.** `theme-color` est déclaré par requête média
 `prefers-color-scheme`. Un visiteur dont le système est en clair mais qui force
@@ -285,6 +285,21 @@ rester minuscule et sans dépendance : il s'exécute avant tout le reste.
 
 **Vérification.** La balise change de valeur quand `data-theme` est posé, sans
 clignotement au chargement.
+
+**Fait.** Le script de thème met les DEUX balises à la couleur forcée, sans
+regarder laquelle correspond au système : c'est ce qui rend le résultat juste
+quel que soit le réglage de la machine. Le sélecteur fait de même au clic — la
+barre suivrait sinon avec un rechargement de retard — et rend à chaque balise
+la couleur de sa propre requête média au retour en « système ».
+
+Les deux couleurs vivaient en double dans les deux `viewport` de layout. Elles
+sont désormais dans `src/lib/theme.ts`, lu par les layouts, le script et le
+sélecteur : quatre copies littérales auraient divergé, et la seule chose
+visible aurait été une barre d'adresse d'une autre couleur que la page.
+
+Vérifié sur le DOM réel (`--dump-dom`) après exécution du script, avec le
+sombre forcé dans le stockage : les deux balises passent à `#0d0a16`, y compris
+celle dont la requête média vise le clair.
 
 ---
 

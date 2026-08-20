@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import { SiteShell } from '@/components/SiteShell';
 import { PREFIXED_LOCALES, isLocale } from '@/i18n/config';
 import { buildMetadata } from '@/lib/seo';
+import { THEME_COLORS } from '@/lib/theme';
 import '../../globals.css';
 
 export function generateStaticParams() {
@@ -26,8 +27,8 @@ export async function generateMetadata({
 
 export const viewport: Viewport = {
     themeColor: [
-        { media: '(prefers-color-scheme: light)', color: '#fdf8ec' },
-        { media: '(prefers-color-scheme: dark)', color: '#0d0a16' },
+        { media: '(prefers-color-scheme: light)', color: THEME_COLORS.light },
+        { media: '(prefers-color-scheme: dark)', color: THEME_COLORS.dark },
     ],
     colorScheme: 'light dark',
 };

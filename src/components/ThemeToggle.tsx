@@ -4,6 +4,7 @@ import { useSyncExternalStore } from 'react';
 import { Monitor, Moon, Sun } from 'lucide-react';
 import type { Dictionary } from '@/i18n';
 import { format } from '@/i18n/format';
+import { THEME_COLORS } from '@/lib/theme';
 
 type Theme = 'system' | 'light' | 'dark';
 
@@ -60,6 +61,14 @@ function applyTheme(next: Theme) {
 
     if (next === 'system') document.documentElement.removeAttribute('data-theme');
     else document.documentElement.setAttribute('data-theme', next);
+
+    // La barre d'adresse doit suivre le clic, pas le rechargement suivant. En
+    // « système », chaque balise retrouve la couleur de SA requête média —
+    // c'est l'attribut `media` qui dit laquelle, pas l'ordre du document.
+    for (const meta of document.querySelectorAll<HTMLMetaElement>('meta[name="theme-color"]')) {
+        const scheme = meta.media.includes('dark') ? 'dark' : 'light';
+        meta.content = next === 'system' ? THEME_COLORS[scheme] : THEME_COLORS[next];
+    }
 
     for (const listener of listeners) listener();
 }
