@@ -36,7 +36,9 @@ de tester » finit toujours en production, visible dans une seule langue.
   paraphrase le code qu'il surplombe finit par mentir.
 - Conventional commits, en français.
 
-Le reste des conventions est dans `CLAUDE.md`, qui sert de guide au dépôt.
+Les choix non évidents sont expliqués **dans le code**, à l'endroit qui les
+porte : `nginx/default.conf.template` pour la configuration de production,
+`src/i18n/routes.ts` pour les URL, `src/app/globals.css` pour les thèmes.
 
 ## Signaler un problème
 
