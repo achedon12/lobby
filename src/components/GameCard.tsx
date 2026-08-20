@@ -79,7 +79,13 @@ export function GameCard({
                     <span>{copy.tagline}</span>
                     <span
                         id={destinationId}
-                        className="inline-flex items-center gap-0.5 tracking-normal normal-case text-fg-muted/80"
+                        // ⚠️ PAS d'opacité ici. `text-fg-muted/80` avait été
+                        // choisi pour atténuer la destination, et faisait
+                        // tomber le rapport de contraste sous 4,5:1 sur le
+                        // panneau teinté — Lighthouse l'a signalé. La
+                        // discrétion vient de la taille et de la casse, pas
+                        // d'un texte délavé.
+                        className="inline-flex items-center gap-0.5 tracking-normal normal-case"
                     >
                         {host}
                         <ArrowUpRight aria-hidden="true" className="size-3" />

@@ -81,6 +81,16 @@ d'écran annonce « Push Your Luck, pushyourluck.net », et le nom continue de
 correspondre au texte affiché. Vérifié en 1000 et en 320 px, la ligne ne se
 casse pas.
 
+**Défaut introduit, puis corrigé.** Le domaine avait d'abord été atténué en
+`text-fg-muted/80` : sur le panneau teinté, le rapport de contraste tombait
+sous 4,5:1 et l'accessibilité passait de 100 à 96. Repéré à l'itération
+suivante, faute d'avoir relancé Lighthouse sur celle-ci. L'opacité est retirée
+— la discrétion vient de la taille et de la casse, pas d'un texte délavé.
+
+**Leçon retenue pour les entrées suivantes** : toute entrée qui touche à une
+couleur ou à une opacité passe par un audit d'accessibilité avant d'être
+cochée, même si sa section « Vérification » ne le demande pas.
+
 ---
 
 ## P2 — confort
