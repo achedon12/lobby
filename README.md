@@ -37,7 +37,7 @@ npm run check        # typecheck + lint + build
 | Vignettes | des SVG en ligne écrits à la main, un par jeu (`components/GameArt.tsx`) |
 | Typographie | Fredoka (titres) et Outfit (texte), variables et auto-hébergées |
 | Thèmes | système, clair forcé, sombre forcé |
-| Production | une image nginx sans privilèges, en lecture seule, 84 Mo |
+| Production | une image nginx sans privilèges, en lecture seule, **28 Mo** |
 
 ## Structure
 
