@@ -37,7 +37,7 @@ server {
     gzip_min_length 1024;
     # `text/xml` ET `application/xml` : nginx sert sitemap.xml en text/xml, et
     # ne compressait donc rien avec la seule variante `application/`.
-    gzip_types text/plain text/css text/xml text/xsl application/javascript application/json application/xml application/rss+xml image/svg+xml application/manifest+json;
+    gzip_types text/plain text/css text/xml application/javascript application/json application/xml application/rss+xml image/svg+xml application/manifest+json;
 
     # `/fr/` n'est jamais généré : le français vit sur `/`. La redirection
     # permanente existe pour les liens déjà écrits à la main, et pour qu'un
@@ -103,24 +103,30 @@ server {
         add_header Cache-Control "no-store" always;
     }
 
-    # ⚠️ `.xsl` est absent de mime.types, et servi en
-    # `application/octet-stream` le navigateur téléchargerait la feuille au
-    # lieu de l'appliquer.
+    # Le plan du site est servi en `application/xml`, comme le font
+    # pushyourluck.net et loupsgarous.net : c'est le type qui déclenche le
+    # visualiseur XML du navigateur. Sans cette règle, mime.types le donne en
+    # `text/xml`.
     #
-    # Corrigé par `default_type` sur CETTE adresse, surtout pas par un bloc
-    # `types { text/xsl xsl; }` : en nginx, un bloc `types` REMPLACE toute la
-    # table MIME du contexte au lieu de l'étendre. Posé au niveau du serveur,
-    # il a fait perdre à `.xml` son `text/xml`, et le plan du site est parti
-    # en téléchargement.
-    location = /sitemap.xsl {
-        default_type text/xsl;
+    # `types { }` vide, puis `default_type` : `default_type` seul ne l'emporte
+    # pas sur une correspondance d'extension. Le bloc est PORTÉ PAR CETTE
+    # LOCATION et n'affecte qu'elle — posé au niveau du serveur, il ferait
+    # perdre son type à tout le reste.
+    location = /sitemap.xml {
+        types { }
+        default_type application/xml;
         include /etc/nginx/security-headers.conf;
         add_header Cache-Control "public, max-age=0, must-revalidate" always;
     }
 
-    # Même trou que pour `.xsl` : `.webmanifest` est absent de mime.types et
-    # partait en `application/octet-stream`. La spécification demande
+    # ⚠️ `.webmanifest` est absent de mime.types et partait en
+    # `application/octet-stream` ; la spécification demande
     # `application/manifest+json`.
+    #
+    # Corrigé par `default_type` sur CETTE adresse, surtout pas par un bloc
+    # `types` au niveau du serveur : en nginx un bloc `types` REMPLACE toute la
+    # table MIME du contexte au lieu de l'étendre. Essayé une fois, `.xml` y a
+    # perdu son `text/xml` et le plan du site est parti en téléchargement.
     location = /manifest.webmanifest {
         default_type application/manifest+json;
         include /etc/nginx/security-headers.conf;
