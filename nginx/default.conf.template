@@ -20,13 +20,6 @@ server {
     charset utf-8;
     server_tokens off;
 
-    # ⚠️ `.xsl` est absent de mime.types : servi en application/octet-stream,
-    # le navigateur téléchargerait la feuille au lieu de l'appliquer, et le
-    # plan du site resterait un arbre XML brut.
-    types {
-        text/xsl xsl;
-    }
-
     # ⚠️ Sans ça, nginx écrit ses redirections en ABSOLU à partir de son propre
     # port d'écoute : un `/en` renvoyait « Location: http://127.0.0.1:8080/en/ ».
     # Derrière le proxy inverse, le visiteur serait expédié sur un hôte et un
@@ -108,6 +101,30 @@ server {
         internal;
         include /etc/nginx/security-headers.conf;
         add_header Cache-Control "no-store" always;
+    }
+
+    # ⚠️ `.xsl` est absent de mime.types, et servi en
+    # `application/octet-stream` le navigateur téléchargerait la feuille au
+    # lieu de l'appliquer.
+    #
+    # Corrigé par `default_type` sur CETTE adresse, surtout pas par un bloc
+    # `types { text/xsl xsl; }` : en nginx, un bloc `types` REMPLACE toute la
+    # table MIME du contexte au lieu de l'étendre. Posé au niveau du serveur,
+    # il a fait perdre à `.xml` son `text/xml`, et le plan du site est parti
+    # en téléchargement.
+    location = /sitemap.xsl {
+        default_type text/xsl;
+        include /etc/nginx/security-headers.conf;
+        add_header Cache-Control "public, max-age=0, must-revalidate" always;
+    }
+
+    # Même trou que pour `.xsl` : `.webmanifest` est absent de mime.types et
+    # partait en `application/octet-stream`. La spécification demande
+    # `application/manifest+json`.
+    location = /manifest.webmanifest {
+        default_type application/manifest+json;
+        include /etc/nginx/security-headers.conf;
+        add_header Cache-Control "public, max-age=0, must-revalidate" always;
     }
 
     # Sonde du healthcheck Compose. `access_log off` évite de noyer les vrais
