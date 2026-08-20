@@ -31,8 +31,14 @@ les bonnes pratiques tombent à 96 — voir « Ce qui reste à faire ».
   que nginx sert réellement.
 - `hreflang` réciproques entre `fr`, `en`, `es`, `de`, plus `x-default` pointant
   vers une page réelle et non vers une redirection.
-- `sitemap.xml` déclarant les huit URL — deux pages × quatre langues — **et**
-  leurs alternatives mutuelles.
+- `sitemap.xml` déclarant les seize URL — quatre pages × quatre langues — avec
+  `lastmod`, `changefreq` et `priority`.
+
+  ⚠️ **Sans `xhtml:link`.** Chrome désactive son visualiseur XML dès qu'un
+  document contient l'espace de noms XHTML : le plan s'affichait alors en texte
+  brut. Les `hreflang` sont déjà déclarés dans le `<head>` des seize pages, et
+  Google accepte indifféremment ce canal ou celui du plan — les deux à la fois
+  était une redondance, pas une sécurité.
 - **Slugs traduits** : `/a-propos/`, `/en/about/`, `/es/acerca-de/`,
   `/de/ueber-uns/`. Un mot-clé dans l'URL, dans la langue du visiteur.
 - `robots.txt` avec l'adresse du sitemap.
