@@ -19,7 +19,9 @@ export type ContentKey = (typeof CONTENT_KEYS)[number];
 // `app/(default)/mentions-legales/` ↔ `legal.fr`. Rien ne le vérifie.
 const SLUGS: Record<RouteKey, Record<Locale, string>> = {
     home: { fr: '', en: '', es: '', de: '' },
-    about: { fr: 'a-propos', en: 'about', es: 'acerca-de', de: 'ueber-uns' },
+    // ⚠️ Le français partage ici le slug anglais, à la demande. Les autres
+    // pages gardent des slugs traduits : c'est une exception, pas la règle.
+    about: { fr: 'about', en: 'about', es: 'acerca-de', de: 'ueber-uns' },
     legal: {
         fr: 'mentions-legales',
         en: 'legal-notice',
