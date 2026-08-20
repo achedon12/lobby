@@ -10,6 +10,9 @@ export const APP_VERSION = process.env.NEXT_PUBLIC_APP_VERSION ?? '0.0.0';
 
 export const AUTHOR = {
     name: 'Léo Deroin',
+    // Le site personnel de l'auteur, distinct de ce panneau : c'est vers lui
+    // que pointe son nom, partout où il est écrit.
+    site: 'https://leoderoin.fr',
     github: 'https://github.com/achedon12',
     email: 'contact@leoderoin.fr',
 } as const;

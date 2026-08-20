@@ -78,7 +78,7 @@ export const es: Dictionary = {
             },
             {
                 title: 'Quién lo hizo',
-                body: 'Léo Deroin, desarrollador. El sitio está escrito, alojado y mantenido por una sola persona.',
+                body: '{author}, desarrollador. El sitio está escrito, alojado y mantenido por una sola persona.',
             },
         ],
         contactTitle: 'Escribir',
@@ -94,7 +94,7 @@ export const es: Dictionary = {
         sections: [
             {
                 title: 'Editor',
-                body: 'jeux.leoderoin.fr está editado por Léo Deroin, a título personal y sin fines comerciales. El editor es también el director de la publicación.',
+                body: 'jeux.leoderoin.fr está editado por {author}, a título personal y sin fines comerciales. El editor es también el director de la publicación.',
             },
             {
                 title: 'Alojamiento',
@@ -143,7 +143,7 @@ export const es: Dictionary = {
         backHome: 'Ver los juegos',
     },
     footer: {
-        madeBy: 'Creado por Léo Deroin',
+        madeBy: 'Creado por {author}',
         navLegal: 'Aviso legal',
         navPrivacy: 'Privacidad',
         siteHeading: 'El sitio',

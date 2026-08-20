@@ -44,7 +44,7 @@ export function buildMetadata(locale: Locale, key: RouteKey = 'home'): Metadata 
         description: copy.description,
         keywords: dictionary.meta.keywords,
         applicationName: dictionary.meta.title,
-        authors: [{ name: AUTHOR.name, url: AUTHOR.github }],
+        authors: [{ name: AUTHOR.name, url: AUTHOR.site }],
         creator: AUTHOR.name,
         publisher: AUTHOR.name,
         alternates: {
@@ -97,8 +97,8 @@ export function buildJsonLd(locale: Locale, key: RouteKey = 'home'): string {
         '@type': 'Person',
         '@id': `${SITE_URL}/#person`,
         name: AUTHOR.name,
-        url: SITE_URL,
-        sameAs: [AUTHOR.github],
+        url: AUTHOR.site,
+        sameAs: [AUTHOR.site, AUTHOR.github],
     };
 
     const website = {

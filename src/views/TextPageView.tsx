@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
+import { AuthorLink } from '@/components/AuthorLink';
 import { getDictionary } from '@/i18n';
 import type { Locale } from '@/i18n/config';
 import { format } from '@/i18n/format';
@@ -34,12 +35,18 @@ export function TextPageView({ locale, routeKey }: { locale: Locale; routeKey: C
                                 la LCEN. Vidées par erreur, elles laissent un
                                 texte volontairement voyant plutôt qu'un blanc
                                 qui passerait inaperçu. */}
-                            {format(section.body, {
-                                host: HOST.name || TO_FILL,
-                                address: HOST.address || TO_FILL,
-                                phone: HOST.phone || TO_FILL,
-                                registration: HOST.registration || TO_FILL,
-                            })}
+                            {/* `format` d'abord pour les coordonnées de
+                                l'hébergeur, `AuthorLink` ensuite pour le nom :
+                                le premier produit une chaîne, le second du JSX,
+                                l'ordre n'est donc pas interchangeable. */}
+                            <AuthorLink
+                                template={format(section.body, {
+                                    host: HOST.name || TO_FILL,
+                                    address: HOST.address || TO_FILL,
+                                    phone: HOST.phone || TO_FILL,
+                                    registration: HOST.registration || TO_FILL,
+                                })}
+                            />
                         </dd>
                     </div>
                 ))}

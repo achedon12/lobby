@@ -82,7 +82,7 @@ export const fr = {
             },
             {
                 title: 'Qui l’a fait',
-                body: 'Léo Deroin, développeur. Le site est écrit, hébergé et maintenu par une seule personne.',
+                body: '{author}, développeur. Le site est écrit, hébergé et maintenu par une seule personne.',
             },
         ],
         contactTitle: 'Écrire',
@@ -99,7 +99,7 @@ export const fr = {
         sections: [
             {
                 title: 'Éditeur',
-                body: 'Le site jeux.leoderoin.fr est édité par Léo Deroin, à titre personnel et non commercial. Le directeur de la publication est l’éditeur lui-même.',
+                body: 'Le site jeux.leoderoin.fr est édité par {author}, à titre personnel et non commercial. Le directeur de la publication est l’éditeur lui-même.',
             },
             {
                 title: 'Hébergeur',
@@ -148,7 +148,7 @@ export const fr = {
         backHome: 'Voir les jeux',
     },
     footer: {
-        madeBy: 'Créé par Léo Deroin',
+        madeBy: 'Créé par {author}',
         navLegal: 'Mentions légales',
         navPrivacy: 'Confidentialité',
         siteHeading: 'Le site',

@@ -77,7 +77,7 @@ export const en: Dictionary = {
             },
             {
                 title: 'Who made it',
-                body: 'Léo Deroin, a developer. The site is written, hosted and maintained by one person.',
+                body: '{author}, a developer. The site is written, hosted and maintained by one person.',
             },
         ],
         contactTitle: 'Get in touch',
@@ -93,7 +93,7 @@ export const en: Dictionary = {
         sections: [
             {
                 title: 'Publisher',
-                body: 'jeux.leoderoin.fr is published by Léo Deroin, in a personal and non-commercial capacity. The publisher is also the publication director.',
+                body: 'jeux.leoderoin.fr is published by {author}, in a personal and non-commercial capacity. The publisher is also the publication director.',
             },
             {
                 title: 'Host',
@@ -142,7 +142,7 @@ export const en: Dictionary = {
         backHome: 'See the games',
     },
     footer: {
-        madeBy: 'Built by Léo Deroin',
+        madeBy: 'Built by {author}',
         navLegal: 'Legal notice',
         navPrivacy: 'Privacy',
         siteHeading: 'The site',

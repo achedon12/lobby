@@ -4,6 +4,7 @@ import type { Locale } from '@/i18n/config';
 import { format } from '@/i18n/format';
 import { path } from '@/i18n/routes';
 import { APP_VERSION, AUTHOR } from '@/lib/site';
+import { AuthorLink } from './AuthorLink';
 import { BrandMark, BrandWordmark } from './BrandMark';
 
 const linkClass =
@@ -60,7 +61,9 @@ export function SiteFooter({ locale, dictionary }: { locale: Locale; dictionary:
                 </div>
 
                 <div className="flex flex-wrap items-center justify-between gap-2 border-t border-border-subtle pt-5 text-xs text-fg-muted">
-                    <span>{dictionary.footer.madeBy}</span>
+                    <span>
+                        <AuthorLink template={dictionary.footer.madeBy} />
+                    </span>
                     <span className="tabular-nums">
                         {format(dictionary.footer.versionLabel, { version: APP_VERSION })}
                     </span>
