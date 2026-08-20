@@ -1,0 +1,313 @@
+@import 'tailwindcss';
+
+/* ──────────────────────────────────────────────────────────────────────────
+   Palette
+   Chaque couleur a sa valeur de base sur `:root`. Une couleur définie
+   UNIQUEMENT dans un bloc @media ou [data-theme] disparaît dans les deux
+   autres états — et le défaut « système » est justement celui qu'on oublie
+   de tester.
+
+   Le clair est un PAPIER crème, pas un blanc : les vignettes des jeux sont
+   des scènes nocturnes, et un fond blanc pur les fait ressortir comme des
+   trous. Le crème les pose.
+   ────────────────────────────────────────────────────────────────────────── */
+:root {
+    --bg: #fdf8ec;
+    --bg-elevated: #fffdf7;
+    --bg-sunken: #f6efdd;
+    --fg: #1b1526;
+    --fg-muted: #6a6178;
+    --border: #e7dcc4;
+    --border-strong: #d2c4a6;
+    --accent: #6d3ce0;
+    --accent-contrast: #fffdf7;
+    --ring: #6d3ce0;
+    --dots: rgb(27 21 38 / 0.055);
+    --halo: rgb(109 60 224 / 0.055);
+    --shadow-card: 0 2px 0 var(--border-strong), 0 14px 30px -18px rgb(27 21 38 / 0.5);
+    --shadow-card-hover: 0 4px 0 var(--border-strong), 0 30px 50px -22px rgb(27 21 38 / 0.55);
+
+    /* Couleurs de marque des jeux, reprises de leurs sites : elles servent à
+       les RECONNAÎTRE, pas à décorer. Une teinte qui n'appartient à aucun jeu
+       n'a rien à faire ici. */
+    --game-gold: #9a6708;
+    --game-gold-soft: #fbf0d5;
+    --game-crimson: #b62d1b;
+    --game-crimson-soft: #fbe6e1;
+
+    --status-live: #10794a;
+    --status-live-soft: #dcf3e6;
+}
+
+/* Sombre par préférence système. Le sélecteur exclut le clair FORCÉ, sinon un
+   visiteur qui choisit « clair » sur une machine en thème sombre resterait
+   sombre. */
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme='light']) {
+        --bg: #0d0a16;
+        --bg-elevated: #191325;
+        --bg-sunken: #120e1d;
+        --fg: #f6f2fb;
+        --fg-muted: #a79fba;
+        --border: #2c2440;
+        --border-strong: #3f3459;
+        --accent: #b69bff;
+        --accent-contrast: #16112a;
+        --ring: #b69bff;
+        --dots: rgb(246 242 251 / 0.06);
+    --halo: rgb(182 155 255 / 0.075);
+        --halo: rgb(182 155 255 / 0.075);
+        --shadow-card: 0 2px 0 var(--border-strong), 0 14px 30px -18px rgb(0 0 0 / 0.85);
+        --shadow-card-hover: 0 4px 0 var(--border-strong), 0 30px 50px -22px rgb(0 0 0 / 0.9);
+
+        --game-gold: #f7c860;
+        --game-gold-soft: #31260f;
+        --game-crimson: #ff8b74;
+        --game-crimson-soft: #331611;
+
+        --status-live: #5fdda8;
+        --status-live-soft: #10291f;
+    }
+}
+
+/* Sombre FORCÉ. Ce bloc duplique le précédent volontairement : une règle
+   @media ne s'applique pas quand la machine est en clair, il faut donc une
+   seconde source pour que le bouton l'emporte dans les deux sens. */
+:root[data-theme='dark'] {
+    --bg: #0d0a16;
+    --bg-elevated: #191325;
+    --bg-sunken: #120e1d;
+    --fg: #f6f2fb;
+    --fg-muted: #a79fba;
+    --border: #2c2440;
+    --border-strong: #3f3459;
+    --accent: #b69bff;
+    --accent-contrast: #16112a;
+    --ring: #b69bff;
+    --dots: rgb(246 242 251 / 0.06);
+    --halo: rgb(182 155 255 / 0.075);
+    --shadow-card: 0 2px 0 var(--border-strong), 0 14px 30px -18px rgb(0 0 0 / 0.85);
+    --shadow-card-hover: 0 4px 0 var(--border-strong), 0 30px 50px -22px rgb(0 0 0 / 0.9);
+
+    --game-gold: #f7c860;
+    --game-gold-soft: #31260f;
+    --game-crimson: #ff8b74;
+    --game-crimson-soft: #331611;
+
+    --status-live: #5fdda8;
+    --status-live-soft: #10291f;
+}
+
+@theme inline {
+    --color-bg: var(--bg);
+    --color-bg-elevated: var(--bg-elevated);
+    --color-bg-sunken: var(--bg-sunken);
+    --color-fg: var(--fg);
+    --color-fg-muted: var(--fg-muted);
+    --color-border-subtle: var(--border);
+    --color-border-strong: var(--border-strong);
+    --color-accent: var(--accent);
+    --color-accent-contrast: var(--accent-contrast);
+
+    /* Les deux variables sont posées par next/font sur <html> — voir
+       `src/fonts/index.ts`. Les replis y sont déjà déclarés. */
+    --font-sans: var(--font-sans-local);
+    --font-display: var(--font-display-local);
+}
+
+@layer base {
+    html {
+        color-scheme: light;
+        scroll-behavior: smooth;
+        -webkit-text-size-adjust: 100%;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        html:not([data-theme='light']) {
+            color-scheme: dark;
+        }
+    }
+
+    html[data-theme='dark'] {
+        color-scheme: dark;
+    }
+
+    body {
+        /* Le fond du <body> doit être explicite : laissé transparent, la page
+           emprunterait celui du navigateur et clignoterait en blanc au
+           chargement d'un thème sombre.
+
+           La trame de points est en `background-image` plutôt qu'en élément :
+           elle suit le défilement sans un seul nœud de plus dans le DOM. Le
+           halo passe DEVANT elle dans la pile des couches — l'ordre des deux
+           dégradés compte. */
+        background-color: var(--bg);
+        background-image:
+            radial-gradient(60rem 34rem at 50% 34%, var(--halo), transparent 70%),
+            radial-gradient(var(--dots) 1.5px, transparent 1.5px);
+        background-size:
+            100% 100%,
+            22px 22px;
+        background-position:
+            0 0,
+            -11px -11px;
+        background-repeat: no-repeat, repeat;
+        color: var(--fg);
+        font-family: var(--font-sans);
+        min-height: 100dvh;
+        text-rendering: optimizeLegibility;
+    }
+
+    h1,
+    h2,
+    h3 {
+        font-family: var(--font-display);
+        letter-spacing: -0.015em;
+    }
+
+    /* Le focus au clavier doit rester visible partout. `:focus-visible` ne se
+       déclenche pas au clic souris : aucun contour parasite. */
+    :focus-visible {
+        outline: 3px solid var(--ring);
+        outline-offset: 3px;
+        border-radius: 6px;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        html {
+            scroll-behavior: auto;
+        }
+
+        *,
+        *::before,
+        *::after {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+        }
+    }
+}
+
+@layer components {
+    /* L'accent d'un jeu est choisi par une CLÉ dans `data/games.ts`, résolue
+       ici. La carte n'utilise ensuite que `--card-accent` : ajouter un jeu ne
+       demande donc aucune retouche de composant, seulement une paire de
+       variables et une ligne dans ce fichier. */
+    [data-accent='gold'] {
+        --card-accent: var(--game-gold);
+        --card-accent-soft: var(--game-gold-soft);
+    }
+
+    [data-accent='crimson'] {
+        --card-accent: var(--game-crimson);
+        --card-accent-soft: var(--game-crimson-soft);
+    }
+
+    /* Le lien du titre couvre toute la carte. Le pseudo-élément reste SOUS les
+       liens secondaires (z-index 1 contre 2) : sans cet ordre, « Code source »
+       serait recouvert et ouvrirait le jeu. */
+    .card-link::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        border-radius: inherit;
+    }
+
+    .card-aside {
+        position: relative;
+        z-index: 2;
+    }
+
+    /* Les tuiles sont légèrement de travers au repos et se redressent au
+       survol — l'effet « cartes posées sur une table » du reste du site. La
+       rotation est volontairement sous le degré : au-delà, le texte des
+       vignettes devient pénible à lire sur un écran non HiDPI. */
+    .tile {
+        transform: rotate(var(--tilt)) translateY(0);
+        transition:
+            transform 260ms cubic-bezier(0.2, 0.9, 0.3, 1.2),
+            box-shadow 260ms ease;
+    }
+
+    .tile:hover,
+    .tile:focus-within {
+        transform: rotate(0deg) translateY(-6px);
+    }
+
+    .tile-art {
+        transition: transform 420ms cubic-bezier(0.2, 0.9, 0.3, 1);
+    }
+
+    .tile:hover .tile-art,
+    .tile:focus-within .tile-art {
+        transform: scale(1.06);
+    }
+
+    /* Le lien du titre couvre la carte : c'est donc LUI qui reçoit le focus, et
+       le contour se dessinerait autour du seul texte. On le reporte sur la
+       tuile entière, sinon on ne voit pas ce qu'on s'apprête à ouvrir. */
+    .tile:focus-within {
+        outline: 3px solid var(--ring);
+        outline-offset: 3px;
+    }
+
+    .tile:focus-within .card-link:focus-visible {
+        outline: none;
+    }
+
+    /* ── Vie ambiante des vignettes ──────────────────────────────────────
+       Une seule idée, déclinée : ce sont des scènes NOCTURNES, et une nuit
+       n'est jamais tout à fait immobile. Les étincelles scintillent, la lune
+       respire. Rien d'autre ne bouge — la règle `prefers-reduced-motion` de la
+       couche `base` arrête les deux.
+
+       `transform-box: fill-box` est indispensable sur un enfant de SVG :
+       sans lui, `transform-origin` se réfère au viewBox entier et l'étincelle
+       part en diagonale au lieu de pulser sur place. */
+    .twinkle {
+        transform-box: fill-box;
+        transform-origin: center;
+        animation: twinkle 3.6s ease-in-out infinite;
+    }
+
+    .twinkle:nth-of-type(2n) {
+        animation-duration: 4.4s;
+        animation-delay: -1.2s;
+    }
+
+    .twinkle:nth-of-type(3n) {
+        animation-duration: 5.2s;
+        animation-delay: -2.6s;
+    }
+
+    @keyframes twinkle {
+        0%,
+        100% {
+            opacity: 0.45;
+            transform: scale(0.86);
+        }
+        50% {
+            opacity: 1;
+            transform: scale(1.08);
+        }
+    }
+
+    .breathe {
+        transform-box: fill-box;
+        transform-origin: center;
+        animation: breathe 7s ease-in-out infinite;
+    }
+
+    @keyframes breathe {
+        0%,
+        100% {
+            opacity: 0.75;
+            transform: scale(0.97);
+        }
+        50% {
+            opacity: 1;
+            transform: scale(1.05);
+        }
+    }
+}

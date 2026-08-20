@@ -1,0 +1,46 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 26
+          cache: npm
+
+      # `--ignore-scripts` évite de compiler sharp, qui ne sert qu'à
+      # `npm run og` — un script de poste de développement dont le résultat est
+      # versionné.
+      - run: npm ci --ignore-scripts
+
+      - run: npm run typecheck
+      - run: npm run lint
+
+      # L'URL importe : c'est elle qui écrit les canoniques et le sitemap. La
+      # construction échouerait silencieusement sur un mauvais domaine sans
+      # jamais le signaler.
+      - run: npm run build
+        env:
+          NEXT_PUBLIC_SITE_URL: https://jeux.leoderoin.fr
+
+      # Un garde-fou sur ce que le référencement ne pardonne pas. Chaque page
+      # doit porter sa canonique et les cinq alternatives (4 langues +
+      # x-default).
+      - name: Vérifier les balises de référencement
+        run: |
+          set -e
+          for page in out/index.html out/en/index.html out/es/index.html out/de/index.html; do
+            grep -q '<link rel="canonical"' "$page" || { echo "canonical manquante dans $page"; exit 1; }
+            count=$(grep -o '<link rel="alternate"' "$page" | wc -l)
+            [ "$count" -eq 5 ] || { echo "$page déclare $count alternatives au lieu de 5"; exit 1; }
+          done
+          grep -q 'jeux.leoderoin.fr' out/sitemap.xml
+          echo "Référencement conforme."

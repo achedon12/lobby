@@ -1,0 +1,46 @@
+import type { Metadata, Viewport } from 'next';
+import { notFound } from 'next/navigation';
+import { SiteShell } from '@/components/SiteShell';
+import { PREFIXED_LOCALES, isLocale } from '@/i18n/config';
+import { buildMetadata } from '@/lib/seo';
+import '../../globals.css';
+
+export function generateStaticParams() {
+    return PREFIXED_LOCALES.map((locale) => ({ locale }));
+}
+
+// Le français est servi par le groupe (default) sur `/`. Sans ce garde-fou,
+// un lien vers `/fr/` produirait un doublon exact de la page d'accueil — que
+// les moteurs sanctionnent et que les `hreflang` ne rattrapent pas.
+export const dynamicParams = false;
+
+export async function generateMetadata({
+    params,
+}: {
+    params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+    const { locale } = await params;
+    if (!isLocale(locale)) notFound();
+    return buildMetadata(locale, 'home');
+}
+
+export const viewport: Viewport = {
+    themeColor: [
+        { media: '(prefers-color-scheme: light)', color: '#fdf8ec' },
+        { media: '(prefers-color-scheme: dark)', color: '#0d0a16' },
+    ],
+    colorScheme: 'light dark',
+};
+
+export default async function PrefixedLocaleLayout({
+    children,
+    params,
+}: {
+    children: React.ReactNode;
+    params: Promise<{ locale: string }>;
+}) {
+    const { locale } = await params;
+    if (!isLocale(locale)) notFound();
+
+    return <SiteShell locale={locale}>{children}</SiteShell>;
+}

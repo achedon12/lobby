@@ -1,0 +1,43 @@
+{
+  "name": "jeux-leoderoin",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev -p 3003",
+    "build": "next build",
+    "start": "npx serve@latest out -l 3003",
+    "lint": "eslint",
+    "typecheck": "tsc --noEmit",
+    "og": "tsx scripts/export-og.mts",
+    "check": "npm run typecheck && npm run lint && npm run build",
+    "fonts": "cp node_modules/@fontsource-variable/fredoka/files/fredoka-latin-wght-normal.woff2 node_modules/@fontsource-variable/outfit/files/outfit-latin-wght-normal.woff2 src/fonts/",
+    "nginx": "tsx scripts/gen-nginx-redirects.mts",
+    "prebuild": "tsx scripts/gen-nginx-redirects.mts"
+  },
+  "dependencies": {
+    "lucide-react": "^1.33.0",
+    "next": "16.3.1",
+    "react": "19.2.8",
+    "react-dom": "19.2.8"
+  },
+  "devDependencies": {
+    "@fontsource-variable/fredoka": "^5.2.5",
+    "@fontsource-variable/outfit": "^5.2.5",
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.3.1",
+    "sharp": "^0.34.4",
+    "tailwindcss": "^4",
+    "tsx": "^4.20.3",
+    "typescript": "^5"
+  },
+  "allowScripts": {
+    "sharp@0.35.3": true,
+    "sharp@0.34.5": true,
+    "esbuild@0.28.2": true,
+    "unrs-resolver@1.12.2": true
+  }
+}
