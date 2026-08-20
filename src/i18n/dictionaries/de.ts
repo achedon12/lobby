@@ -36,13 +36,21 @@ export const de: Dictionary = {
         items: {
             'push-your-luck': {
                 name: 'Push Your Luck',
-                tagline: 'Solo-Kartenspiel',
+                facts: [
+                    'Solo',
+                    'Täglich',
+                    'Ohne Konto',
+                ],
                 description:
                     'Ziehe Karten, um den Topf zu füllen — fünf Bomben stecken im Stapel. Kassierst du zu früh, lässt du Punkte liegen; kassierst du zu spät, verlierst du alles. Die Partie des Tages ist für alle dieselbe, mit täglicher Rangliste und ohne Anmeldung.',
             },
             'loups-garous': {
                 name: 'Werwölfe',
-                tagline: 'Gesellschaftsspiel in Echtzeit',
+                facts: [
+                    'Mehrspieler',
+                    'Echtzeit',
+                    'Mit Konto',
+                ],
                 description:
                     'Werwölfe online, mit deinen Freunden. Fortschritt, Kosmetik, Clans und ELO-Rangliste, dazu ein Discord-Bot, der Partien direkt von deinem Server aus startet.',
             },

@@ -57,40 +57,63 @@ export function GameCard({
             {/* Le nom, une ligne de catégorie, la destination. La description
                 complète vit dans le JSON-LD : elle sert aux moteurs, pas au
                 visiteur, qui a déjà l'illustration sous les yeux. */}
-            <div className="flex flex-col gap-0.5 bg-[var(--card-accent-soft)]/40 px-4 py-3.5">
-                <h3 className="text-lg leading-tight font-semibold">
-                    <a
-                        href={game.url}
-                        aria-describedby={destinationId}
-                        className="card-link text-fg no-underline outline-none group-hover:text-[var(--card-accent)]"
-                    >
-                        {copy.name}
-                    </a>
-                </h3>
-                {/* La seule action de la page emmène ailleurs, et rien ne le
-                    disait. Le domaine l'annonce — une information, pas un
-                    avertissement : il reste discret.
+            <div className="flex flex-col gap-1 bg-[var(--card-accent-soft)]/40 px-4 py-3.5">
+                <div className="flex flex-wrap items-baseline justify-between gap-x-3">
+                    <h3 className="text-lg leading-tight font-semibold">
+                        <a
+                            href={game.url}
+                            aria-describedby={destinationId}
+                            className="card-link text-fg no-underline outline-none group-hover:text-[var(--card-accent)]"
+                        >
+                            {copy.name}
+                        </a>
+                    </h3>
+                    {/* La seule action de la page emmène ailleurs, et rien ne
+                        le disait. Le domaine l'annonce — une information, pas
+                        un avertissement : il reste discret.
 
-                    Rattaché en `aria-describedby` et non ajouté au nom
-                    accessible : un lecteur d'écran annonce « Push Your Luck,
-                    pushyourluck.net », et le nom continue de correspondre au
-                    texte affiché. */}
-                <p className="flex flex-wrap items-center justify-between gap-x-3 text-[0.7rem] font-bold tracking-wide text-fg-muted uppercase">
-                    <span>{copy.tagline}</span>
+                        Rattaché en `aria-describedby` et non ajouté au nom
+                        accessible : un lecteur d'écran annonce « Push Your
+                        Luck, pushyourluck.net », et le nom continue de
+                        correspondre au texte affiché.
+
+                        ⚠️ PAS d'opacité. `text-fg-muted/80` avait été choisi
+                        pour l'atténuer, et faisait tomber le contraste sous
+                        4,5:1 sur le panneau teinté — Lighthouse l'a signalé.
+                        La discrétion vient de la taille, pas d'un texte
+                        délavé. */}
                     <span
                         id={destinationId}
-                        // ⚠️ PAS d'opacité ici. `text-fg-muted/80` avait été
-                        // choisi pour atténuer la destination, et faisait
-                        // tomber le rapport de contraste sous 4,5:1 sur le
-                        // panneau teinté — Lighthouse l'a signalé. La
-                        // discrétion vient de la taille et de la casse, pas
-                        // d'un texte délavé.
-                        className="inline-flex items-center gap-0.5 tracking-normal normal-case"
+                        className="inline-flex items-center gap-0.5 text-[0.7rem] text-fg-muted"
                     >
                         {host}
                         <ArrowUpRight aria-hidden="true" className="size-3" />
                     </span>
-                </p>
+                </div>
+
+                {/* Trois repères FACTUELS, les mêmes axes d'un jeu à l'autre —
+                    seul ou à plusieurs, à quel rythme, avec ou sans compte.
+                    Une catégorie (« jeu de cartes solo ») décrit ; elle ne
+                    départage pas. Ils remplacent cette catégorie plutôt que de
+                    s'y ajouter : la tuile garde exactement sa hauteur. */}
+                <ul // Pas de `tracking-wide` : l'interlettrage coûtait une
+                    // dizaine de pixels sur la ligne, assez pour casser
+                    // « Multijugador · Tiempo real · Con cuenta » à 320 px.
+                    className="flex flex-wrap items-center gap-x-1.5 text-[0.7rem] font-bold text-fg-muted uppercase">
+                    {copy.facts.map((fact, index) => (
+                        <li key={fact} className="flex items-center gap-1.5">
+                            {fact}
+                            {/* Le séparateur suit le repère au lieu de le
+                                précéder : placé avant, il se retrouvait seul en
+                                tête de ligne au retour à la ligne à 320 px. */}
+                            {index < copy.facts.length - 1 && (
+                                <span aria-hidden="true" className="text-border-strong">
+                                    ·
+                                </span>
+                            )}
+                        </li>
+                    ))}
+                </ul>
             </div>
         </article>
     );

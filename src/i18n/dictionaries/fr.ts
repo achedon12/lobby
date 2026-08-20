@@ -38,7 +38,11 @@ export const fr = {
         items: {
             'push-your-luck': {
                 name: 'Push Your Luck',
-                tagline: 'Jeu de cartes solo',
+                facts: [
+                    'Solo',
+                    'Chaque jour',
+                    'Sans compte',
+                ],
                 // Affichée nulle part : elle alimente le JSON-LD, qui décrit
                 // chaque jeu aux moteurs. La tuile, elle, montre l'illustration.
                 description:
@@ -46,7 +50,11 @@ export const fr = {
             },
             'loups-garous': {
                 name: 'Loups-Garous',
-                tagline: 'Jeu de société en temps réel',
+                facts: [
+                    'À plusieurs',
+                    'Temps réel',
+                    'Avec compte',
+                ],
                 description:
                     'Le Loup-Garou en ligne, avec vos amis, en français. Progression, cosmétiques, clans et classement ELO, plus un bot Discord compagnon pour lancer les parties directement depuis votre serveur.',
             },

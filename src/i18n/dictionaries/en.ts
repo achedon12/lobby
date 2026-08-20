@@ -35,13 +35,21 @@ export const en: Dictionary = {
         items: {
             'push-your-luck': {
                 name: 'Push Your Luck',
-                tagline: 'Solo card game',
+                facts: [
+                    'Solo',
+                    'Daily',
+                    'No account',
+                ],
                 description:
                     'Draw cards to grow the pot — five bombs are hiding in the deck. Bank too early and you leave points behind; bank too late and you lose everything. Everyone plays the same daily deal, with a daily leaderboard and no sign-up.',
             },
             'loups-garous': {
                 name: 'Werewolf',
-                tagline: 'Real-time party game',
+                facts: [
+                    'Multiplayer',
+                    'Real time',
+                    'Account',
+                ],
                 description:
                     'Werewolf online, with your friends. Progression, cosmetics, clans and ELO ranking, plus a companion Discord bot that starts games straight from your server.',
             },

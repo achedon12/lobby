@@ -210,7 +210,7 @@ des trois blocs dans le CSS servi.
 
 ---
 
-### [ ] 8. La page d'accueil ne dit pas ce qu'on trouve derrière un jeu
+### [x] 8. La page d'accueil ne dit pas ce qu'on trouve derrière un jeu
 
 **Le problème.** Les tuiles ne portent qu'un nom et une catégorie. Un visiteur
 qui hésite entre les deux n'a aucun critère : durée d'une partie, seul ou à
@@ -221,3 +221,24 @@ plusieurs, inscription ou non.
 description qui alourdissaient la tuile.
 
 **Vérification.** La tuile reste sous sa hauteur actuelle en 320 px.
+
+**Fait.** Trois repères par jeu, sur les **mêmes axes** — seul ou à plusieurs,
+à quel rythme, avec ou sans compte. C'est la comparabilité qui aide à choisir,
+pas la quantité de texte.
+
+Ils REMPLACENT la catégorie (« Jeu de cartes solo ») au lieu de s'y ajouter :
+une catégorie décrit, elle ne départage pas, et l'information « solo » qu'elle
+portait est reprise par le premier repère. La tuile garde donc son nombre de
+lignes, et le domaine remonte à côté du titre.
+
+Deux défauts corrigés en cours de route : le séparateur, placé avant chaque
+repère, se retrouvait seul en tête de ligne au retour à la ligne — il suit
+désormais le repère qu'il sépare. Et l'interlettrage a été retiré, qui coûtait
+une dizaine de pixels.
+
+**Écart assumé sur la hauteur.** À 320 px, « Multijugador · Tiempo real · Con
+cuenta » passe sur deux lignes : la tuile espagnole du loup-garou est plus
+haute d'une ligne. Raccourcir davantage reviendrait à retirer l'information que
+cette entrée sert justement à ajouter. Le retour à la ligne est propre, sans
+débordement horizontal, et les sept autres combinaisons langue/jeu tiennent sur
+une ligne.

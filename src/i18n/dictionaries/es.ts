@@ -36,13 +36,21 @@ export const es: Dictionary = {
         items: {
             'push-your-luck': {
                 name: 'Push Your Luck',
-                tagline: 'Juego de cartas en solitario',
+                facts: [
+                    'En solitario',
+                    'Cada día',
+                    'Sin cuenta',
+                ],
                 description:
                     'Roba cartas para agrandar el bote: cinco bombas esperan en la baraja. Si te plantas demasiado pronto dejas puntos sobre la mesa; si tardas demasiado lo pierdes todo. La partida del día es la misma para todos, con clasificación diaria y sin registro.',
             },
             'loups-garous': {
                 name: 'Hombres Lobo',
-                tagline: 'Juego de mesa en tiempo real',
+                facts: [
+                    'Multijugador',
+                    'Tiempo real',
+                    'Con cuenta',
+                ],
                 description:
                     'Hombres Lobo en línea, con tus amigos. Progresión, cosméticos, clanes y clasificación ELO, además de un bot de Discord que lanza las partidas desde tu propio servidor.',
             },
