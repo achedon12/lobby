@@ -10,7 +10,7 @@ Convention : `[ ]` à faire · `[~]` en cours · `[x]` fait, avec le commit.
 
 ## P1 — défauts réels, visibles par un visiteur
 
-### [ ] 1. Le lien d'évitement atterrit sous l'en-tête collante
+### [x] 1. Le lien d'évitement atterrit sous l'en-tête collante
 
 **Le problème.** `#contenu` est ciblé par le lien d'évitement, mais l'en-tête
 est `sticky` : le navigateur amène l'ancre en haut du cadre, donc *derrière*
@@ -22,6 +22,12 @@ l'en-tête. Vaut aussi pour toute ancre future.
 
 **Vérification.** Charger `/#contenu` et constater que le `<h1>` est
 entièrement visible, en 320 et en 1280 px.
+
+**Fait.** `--header-h` posée sur `:root`, et `scroll-margin-block-start`
+appliqué à **tout `[id]`** plutôt qu'au seul `#contenu` : une ancre ajoutée
+plus tard aurait sinon hérité du même défaut, en silence. Vérifié sur
+`/mentions-legales/#contenu`, la seule page assez haute pour que le navigateur
+défile vraiment — le titre s'arrête bien sous la barre.
 
 ---
 

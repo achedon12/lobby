@@ -23,6 +23,12 @@
     --accent-contrast: #fdf8ec;
     --ring: #17131f;
     --dots: rgb(27 21 38 / 0.055);
+
+    /* Hauteur de l'en-tête collante. Elle sert à décaler les ancres : sans ce
+       décalage, le navigateur amène la cible en haut du cadre, c'est-à-dire
+       DERRIÈRE la barre. Le lien d'évitement déposait ainsi l'utilisateur
+       devant un titre à moitié caché — exactement ce qu'il sert à éviter. */
+    --header-h: 3.25rem;
     --halo: rgb(23 19 31 / 0.045);
     --shadow-card: 0 2px 0 var(--border-strong), 0 14px 30px -18px rgb(27 21 38 / 0.5);
     --shadow-card-hover: 0 4px 0 var(--border-strong), 0 30px 50px -22px rgb(27 21 38 / 0.55);
@@ -167,6 +173,12 @@
     h3 {
         font-family: var(--font-display);
         letter-spacing: -0.015em;
+    }
+
+    /* Toute cible d'ancre, pas seulement `#contenu` : une ancre ajoutée plus
+       tard hériterait sinon du même défaut, en silence. */
+    [id] {
+        scroll-margin-block-start: calc(var(--header-h) + 1.25rem);
     }
 
     /* Le focus au clavier doit rester visible partout. `:focus-visible` ne se
