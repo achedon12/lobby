@@ -66,16 +66,6 @@ export const fr = {
                 description:
                     'Devinez le pays du jour à sa seule silhouette. Chaque proposition vous donne la distance qui vous en sépare et le cap à suivre : six essais pour converger. La même partie pour tout le monde, chaque jour, sans inscription et sans publicité.',
             },
-            fugace: {
-                name: 'Fugace',
-                facts: [
-                    'Solo',
-                    '29 niveaux',
-                    'Sans compte',
-                ],
-                description:
-                    'Une créature vit dans votre barre d’onglets. On ne la voit jamais dans la page : seulement dans les titres et les favicons. Regarder son onglet la fait fuir, regarder son voisin lui ferme la porte — et on ne peut regarder qu’un onglet à la fois.',
-            },
             'push-your-luck': {
                 name: 'Push Your Luck',
                 facts: [

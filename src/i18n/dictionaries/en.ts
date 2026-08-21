@@ -63,16 +63,6 @@ export const en: Dictionary = {
                 description:
                     'Guess the country of the day from its outline alone. Every guess tells you how far away it is and which way to head: six tries to close in. The same puzzle for everyone, every day, with no sign-up and no ads.',
             },
-            fugace: {
-                name: 'Fugace',
-                facts: [
-                    'Solo',
-                    '29 levels',
-                    'No account',
-                ],
-                description:
-                    'A creature lives in your browser tab bar. You never see it on the page, only in the titles and favicons. Look at its tab and it flees; look at the tab next door and you close that door — and you can only look at one tab at a time.',
-            },
             'push-your-luck': {
                 name: 'Push Your Luck',
                 facts: [

@@ -64,16 +64,6 @@ export const de: Dictionary = {
                 description:
                     'Errate das Land des Tages allein an seiner Silhouette. Jeder Versuch verrät Entfernung und Richtung: sechs Anläufe, um näher zu kommen. Für alle dasselbe Rätsel, jeden Tag, ohne Anmeldung und ohne Werbung.',
             },
-            fugace: {
-                name: 'Fugace',
-                facts: [
-                    'Allein',
-                    '29 Level',
-                    'Ohne Konto',
-                ],
-                description:
-                    'Ein Wesen lebt in deiner Tab-Leiste. Auf der Seite siehst du es nie, nur in den Titeln und Favicons. Schaust du seinen Tab an, flieht es; schaust du den Nachbartab an, schließt du ihm die Tür — und du kannst immer nur einen Tab anschauen.',
-            },
             'push-your-luck': {
                 name: 'Push Your Luck',
                 facts: [

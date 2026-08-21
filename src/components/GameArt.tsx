@@ -510,57 +510,10 @@ function AnguilleArt() {
     );
 }
 
-function FugaceArt() {
-    return (
-        <svg viewBox="0 0 400 240" aria-hidden="true" className="size-full">
-            <defs>
-                <linearGradient id="fugNight" x1="0" y1="0" x2="0.3" y2="1">
-                    <stop offset="0" stopColor="#16281b" />
-                    <stop offset="1" stopColor="#050906" />
-                </linearGradient>
-                <radialGradient id="fugGlow" cx="0.5" cy="0.5" r="0.5">
-                    <stop offset="0" stopColor="#ffb454" stopOpacity="0.55" />
-                    <stop offset="1" stopColor="#ffb454" stopOpacity="0" />
-                </radialGradient>
-                <radialGradient id="fugVignette" cx="0.5" cy="0.5" r="0.74">
-                    <stop offset="0.48" stopColor="#000000" stopOpacity="0" />
-                    <stop offset="1" stopColor="#000000" stopOpacity="0.6" />
-                </radialGradient>
-            </defs>
-
-            <rect width="400" height="240" fill="url(#fugNight)" />
-            <ellipse cx="200" cy="132" rx="170" ry="118" fill="url(#fugGlow)" />
-
-            {/* La barre d'onglets, grandeur d'affiche. C'est le plateau du jeu,
-                et la vignette ne montre rien d'autre. */}
-            <rect x="28" y="168" width="344" height="7" rx="3.5" fill="#384736" />
-
-            {/* Quatre onglets éteints, et un cinquième plus HAUT qui la tient.
-                La hauteur dit lequel compte, sans dépendre de la couleur. */}
-            <path d="M34 168V104a14 14 0 0 1 14-14h44a14 14 0 0 1 14 14v64Z" fill="#141b15" stroke="#384736" strokeWidth="6" strokeLinejoin="round" />
-            <circle cx="70" cy="130" r="9" fill="#56604f" />
-
-            <path d="M118 168V104a14 14 0 0 1 14-14h44a14 14 0 0 1 14 14v64Z" fill="#141b15" stroke="#384736" strokeWidth="6" strokeLinejoin="round" />
-            <circle cx="154" cy="130" r="9" fill="#56604f" />
-
-            <path d="M202 168V62a16 16 0 0 1 16-16h48a16 16 0 0 1 16 16v106Z" fill="#141b15" stroke="#ffb454" strokeWidth="7" strokeLinejoin="round" />
-            <circle cx="242" cy="106" r="30" fill="#ffb454" fillOpacity="0.24" />
-            <circle cx="242" cy="106" r="16" fill="#ffb454" />
-
-            <path d="M294 168V104a14 14 0 0 1 14-14h44a14 14 0 0 1 14 14v64Z" fill="#141b15" stroke="#384736" strokeWidth="6" strokeLinejoin="round" />
-            {/* Sa traînée : l'onglet qu'elle vient de quitter, encore tiède. */}
-            <circle cx="330" cy="130" r="10" fill="none" stroke="#ffb454" strokeWidth="4" strokeOpacity="0.45" />
-
-            <rect width="400" height="240" fill="url(#fugVignette)" />
-        </svg>
-    );
-}
-
 const ART: Record<GameKey, () => JSX.Element> = {
     reflow: ReflowArt,
     anguille: AnguilleArt,
     azimut: AzimutArt,
-    fugace: FugaceArt,
     'push-your-luck': PushYourLuckArt,
     'loups-garous': LoupsGarousArt,
 };

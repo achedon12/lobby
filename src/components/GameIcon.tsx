@@ -1,4 +1,4 @@
-import { Compass, Flame, Frame, Moon, ScanSearch, Spade, type LucideIcon } from 'lucide-react';
+import { Compass, Frame, Moon, ScanSearch, Spade, type LucideIcon } from 'lucide-react';
 import type { GameIconKey } from '@/data/games';
 
 // La correspondance clé → composant vit ici, et nulle part ailleurs :
@@ -9,7 +9,6 @@ const ICONS: Record<GameIconKey, LucideIcon> = {
     moon: Moon,
     compass: Compass,
     frame: Frame,
-    flame: Flame,
     scan: ScanSearch,
 };
 
