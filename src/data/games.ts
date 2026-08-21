@@ -37,7 +37,7 @@ export const GAMES: readonly Game[] = [
     },
     {
         id: 'azimut',
-        url: 'https://azimut.leoderoin.fr',
+        url: 'https://azimut.page',
         status: 'live',
         accent: 'azure',
         icon: 'compass',

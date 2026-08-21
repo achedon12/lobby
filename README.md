@@ -2,7 +2,7 @@
 
 Panneau des jeux publiés sur les domaines de Léo Deroin. Quatre pages, quatre
 langues, entièrement statique : elle ne fait que **pointer vers**
-`reflow.leoderoin.fr`, `azimut.leoderoin.fr`, `pushyourluck.net` et
+`reflow.leoderoin.fr`, `azimut.page`, `pushyourluck.net` et
 `loupsgarous.net`, elle ne les héberge pas.
 
 C'est délibéré. Servir un jeu à deux adresses le ferait entrer en concurrence
