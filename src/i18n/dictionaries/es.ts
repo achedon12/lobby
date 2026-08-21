@@ -34,6 +34,16 @@ export const es: Dictionary = {
         statusBeta: 'En beta',
         statusSoon: 'Próximamente',
         items: {
+            reflow: {
+                name: 'Reflow',
+                facts: [
+                    'En solitario',
+                    '54 enigmas',
+                    'Sin cuenta',
+                ],
+                description:
+                    'Un juego de plataformas cuyo escenario es la ventana del navegador: cada plataforma está anclada a un borde, y redimensionar la ventana mueve el nivel. 54 enigmas escritos a mano y luego partidas generadas sin fin, sin cuenta y sin publicidad.',
+            },
             azimut: {
                 name: 'Azimut',
                 facts: [

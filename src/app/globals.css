@@ -42,6 +42,8 @@
     --game-crimson-soft: #fbe6e1;
     --game-azure: #0d3b66;
     --game-azure-soft: #dbe8f4;
+    --game-violet: #4c1fd6;
+    --game-violet-soft: #e7e0fb;
 
     --status-live: #10794a;
     --status-live-soft: #dcf3e6;
@@ -74,6 +76,8 @@
         --game-crimson-soft: #331611;
         --game-azure: #4cc9f0;
         --game-azure-soft: #0b2733;
+        --game-violet: #b9a0ff;
+        --game-violet-soft: #201839;
 
         --status-live: #5fdda8;
         --status-live-soft: #10291f;
@@ -105,6 +109,8 @@
     --game-crimson-soft: #331611;
     --game-azure: #4cc9f0;
     --game-azure-soft: #0b2733;
+    --game-violet: #b9a0ff;
+    --game-violet-soft: #201839;
 
     --status-live: #5fdda8;
     --status-live-soft: #10291f;
@@ -131,6 +137,7 @@
         --game-gold: #7a5106;
         --game-crimson: #96220f;
         --game-azure: #092b4d;
+        --game-violet: #3a139f;
         --status-live: #0b5c37;
     }
 }
@@ -145,6 +152,7 @@
         --game-gold: #ffd784;
         --game-crimson: #ffa694;
         --game-azure: #9fe2f9;
+        --game-violet: #d3c4ff;
         --status-live: #7ef0be;
     }
 }
@@ -160,6 +168,7 @@
         --game-gold: #ffd784;
         --game-crimson: #ffa694;
         --game-azure: #9fe2f9;
+        --game-violet: #d3c4ff;
         --status-live: #7ef0be;
     }
 }
@@ -282,6 +291,11 @@
     [data-accent='azure'] {
         --card-accent: var(--game-azure);
         --card-accent-soft: var(--game-azure-soft);
+    }
+
+    [data-accent='violet'] {
+        --card-accent: var(--game-violet);
+        --card-accent-soft: var(--game-violet-soft);
     }
 
     /* Le lien du titre couvre toute la carte. Le pseudo-élément reste SOUS les

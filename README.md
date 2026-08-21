@@ -1,7 +1,8 @@
 # jeux.leoderoin.fr
 
 Panneau des jeux publiés sur les domaines de Léo Deroin. Quatre pages, quatre
-langues, entièrement statique : elle ne fait que **pointer vers** `pushyourluck.net` et
+langues, entièrement statique : elle ne fait que **pointer vers**
+`reflow.leoderoin.fr`, `azimut.leoderoin.fr`, `pushyourluck.net` et
 `loupsgarous.net`, elle ne les héberge pas.
 
 C'est délibéré. Servir un jeu à deux adresses le ferait entrer en concurrence
@@ -191,6 +192,7 @@ Voir `docs/seo.md` pour l'audit complet.
 
 ## Ce qui reste à faire
 
-Le lien retour depuis Push Your Luck et Loups-Garous vers cette page. Sans lui,
-l'annuaire ne reçoit aucun trafic et ne sert qu'à son auteur — c'est le maillage
-entre les deux jeux qui justifie le projet, pas la page elle-même.
+Le lien retour depuis Push Your Luck et Loups-Garous vers cette page. Azimut et
+Reflow le portent déjà, dans leur pied de page. Sans lui, l'annuaire ne reçoit
+aucun trafic et ne sert qu'à son auteur — c'est le maillage entre les jeux qui
+justifie le projet, pas la page elle-même.

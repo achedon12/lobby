@@ -321,7 +321,137 @@ function AzimutArt() {
     );
 }
 
+function ReflowArt() {
+    // Deux cadres : celui d'avant, en pointillés, et celui de maintenant, qui
+    // contient le niveau. C'est le jeu entier — le décor EST la fenêtre, et la
+    // fenêtre vient de changer de taille.
+    //
+    // La cote en haut et la poignée en bas à droite sont les deux éléments que
+    // le joueur a réellement sous les yeux : ce sont eux qui font reconnaître
+    // le jeu, pas les plateformes.
+    const platforms = [
+        { x: 136, y: 178, w: 62 },
+        { x: 218, y: 154, w: 56 },
+        { x: 288, y: 128, w: 50 },
+    ];
+
+    return (
+        <svg viewBox="0 0 400 240" aria-hidden="true" className="size-full">
+            <defs>
+                <linearGradient id="rfSky" x1="0" y1="0" x2="0.4" y2="1">
+                    <stop offset="0" stopColor="#2a1f52" />
+                    <stop offset="1" stopColor="#0a0912" />
+                </linearGradient>
+                <pattern id="rfPaper" width="16" height="16" patternUnits="userSpaceOnUse">
+                    <path d="M16 0H0V16" fill="none" stroke="#9d7bff" strokeOpacity="0.16" strokeWidth="1" />
+                </pattern>
+                <radialGradient id="rfVignette" cx="0.5" cy="0.5" r="0.72">
+                    <stop offset="0.55" stopColor="#000000" stopOpacity="0" />
+                    <stop offset="1" stopColor="#000000" stopOpacity="0.55" />
+                </radialGradient>
+                <clipPath id="rfWindow">
+                    <rect x="118" y="74" width="232" height="134" />
+                </clipPath>
+            </defs>
+
+            <rect width="400" height="240" fill="url(#rfSky)" />
+            <rect width="400" height="240" fill="url(#rfPaper)" opacity="0.5" />
+
+            {/* La taille précédente de la fenêtre. Décalée vers le haut à
+                gauche : elle doit se lire comme un AVANT, donc en retrait. */}
+            <rect
+                x="52"
+                y="30"
+                width="196"
+                height="118"
+                fill="none"
+                stroke="#9d7bff"
+                strokeOpacity="0.75"
+                strokeWidth="3"
+                strokeDasharray="10 7"
+            />
+
+            {/* La cote, entre les deux cadres : le nombre que le joueur lit en
+                permanence pendant une partie. */}
+            <g stroke="#9d7bff" strokeOpacity="0.7" strokeWidth="1.4">
+                <line x1="118" y1="62" x2="350" y2="62" />
+                <line x1="118" y1="56" x2="118" y2="68" />
+                <line x1="350" y1="56" x2="350" y2="68" />
+            </g>
+            <rect x="206" y="52" width="56" height="20" fill="#0a0912" />
+            <text
+                x="234"
+                y="66"
+                textAnchor="middle"
+                fill="#c3b1ff"
+                fontSize="12"
+                fontFamily="ui-monospace, monospace"
+                letterSpacing="0.5"
+            >
+                232
+            </text>
+
+            {/* La fenêtre courante, et le niveau dedans. */}
+            <rect x="118" y="74" width="232" height="134" fill="#100e1c" stroke="#6f6a8f" strokeWidth="3" />
+            <g clipPath="url(#rfWindow)">
+                <rect x="118" y="74" width="232" height="134" fill="url(#rfPaper)" />
+
+                {platforms.map((platform) => (
+                    <g key={platform.x}>
+                        <rect x={platform.x} y={platform.y} width={platform.w} height="9" fill="#2b3247" />
+                        <rect x={platform.x} y={platform.y} width={platform.w} height="3" fill="#9d7bff" />
+                    </g>
+                ))}
+
+                {/* Le sol de la fenêtre, et sa bande de pointes : c'est ce qui
+                    donne un BAS à la scène. Sans lui les plateformes flottaient,
+                    et la vignette était plus vide que ses voisines. */}
+                <rect x="118" y="199" width="232" height="9" fill="#2b3247" />
+                <rect x="118" y="199" width="232" height="3" fill="#9d7bff" />
+                {[142, 158, 174, 190, 254, 270, 286].map((x) => (
+                    <path key={x} d={`M${x} 199 l7 -11 l7 11 Z`} fill="#ff3d7f" />
+                ))}
+
+                {/* Une orbe : la sortie reste fermée tant qu'il en reste une. */}
+                <rect x="238" y="134" width="12" height="12" fill="none" stroke="#fbbf24" strokeWidth="2.5" />
+
+                {/* La trajectoire du saut, en pointillés : c'est ce qui donne
+                    du MOUVEMENT à une image fixe. */}
+                <path
+                    d="M196 176 Q214 138 224 152"
+                    fill="none"
+                    stroke="#9d7bff"
+                    strokeOpacity="0.55"
+                    strokeWidth="1.6"
+                    strokeDasharray="4 5"
+                />
+                <rect x="205" y="126" width="14" height="18" fill="#ffffff" />
+                <rect x="300" y="104" width="16" height="24" fill="none" stroke="#a3e635" strokeWidth="3" />
+            </g>
+
+            {/* La poignée de redimensionnement, SUR le coin et non dedans :
+                posée à l'intérieur, elle passait derrière les pointes du sol. */}
+            <g stroke="#9d7bff" strokeWidth="2.6" strokeLinecap="square">
+                <line x1="336" y1="220" x2="358" y2="198" />
+                <line x1="348" y1="222" x2="360" y2="210" />
+            </g>
+
+            {/* Le curseur, juste à côté : il désigne la poignée. */}
+            <path
+                d="M362 196 L362 220 L368 214 L373 224 L378 222 L373 212 L381 211 Z"
+                fill="#f2eef8"
+                stroke="#0a0912"
+                strokeWidth="1.5"
+                strokeLinejoin="round"
+            />
+
+            <rect width="400" height="240" fill="url(#rfVignette)" />
+        </svg>
+    );
+}
+
 const ART: Record<GameKey, () => JSX.Element> = {
+    reflow: ReflowArt,
     azimut: AzimutArt,
     'push-your-luck': PushYourLuckArt,
     'loups-garous': LoupsGarousArt,
