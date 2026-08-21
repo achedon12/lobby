@@ -38,11 +38,11 @@ export const de: Dictionary = {
                 name: 'Reflow',
                 facts: [
                     'Solo',
-                    '54 Rätsel',
+                    '100 Rätsel',
                     'Ohne Konto',
                 ],
                 description:
-                    'Ein Jump-and-Run, dessen Kulisse das Browserfenster ist: jede Plattform hängt an einem Rand, und die Fenstergröße zu ändern verschiebt das Level selbst. 54 handgebaute Rätsel, danach endlos erzeugte Partien, ohne Konto und ohne Werbung.',
+                    'Ein Jump-and-Run, dessen Kulisse das Browserfenster ist: jede Plattform hängt an einem Rand, und die Fenstergröße zu ändern verschiebt das Level selbst. 100 handgebaute Rätsel, danach endlos erzeugte Partien, ohne Konto und ohne Werbung.',
             },
             azimut: {
                 name: 'Azimut',

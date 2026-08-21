@@ -38,11 +38,11 @@ export const es: Dictionary = {
                 name: 'Reflow',
                 facts: [
                     'En solitario',
-                    '54 enigmas',
+                    '100 enigmas',
                     'Sin cuenta',
                 ],
                 description:
-                    'Un juego de plataformas cuyo escenario es la ventana del navegador: cada plataforma está anclada a un borde, y redimensionar la ventana mueve el nivel. 54 enigmas escritos a mano y luego partidas generadas sin fin, sin cuenta y sin publicidad.',
+                    'Un juego de plataformas cuyo escenario es la ventana del navegador: cada plataforma está anclada a un borde, y redimensionar la ventana mueve el nivel. 100 enigmas escritos a mano y luego partidas generadas sin fin, sin cuenta y sin publicidad.',
             },
             azimut: {
                 name: 'Azimut',

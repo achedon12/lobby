@@ -37,11 +37,11 @@ export const en: Dictionary = {
                 name: 'Reflow',
                 facts: [
                     'Solo',
-                    '54 puzzles',
+                    '100 puzzles',
                     'No account',
                 ],
                 description:
-                    'A platformer whose scenery is the browser window: every platform is pinned to an edge, and resizing the window moves the level itself. 54 hand-built puzzles, then endless generated runs, with no account and no ads.',
+                    'A platformer whose scenery is the browser window: every platform is pinned to an edge, and resizing the window moves the level itself. 100 hand-built puzzles, then endless generated runs, with no account and no ads.',
             },
             azimut: {
                 name: 'Azimut',

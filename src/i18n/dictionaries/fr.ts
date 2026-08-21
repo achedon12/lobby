@@ -40,11 +40,11 @@ export const fr = {
                 name: 'Reflow',
                 facts: [
                     'Solo',
-                    '54 énigmes',
+                    '100 énigmes',
                     'Sans compte',
                 ],
                 description:
-                    'Un jeu de plateforme dont le décor est la fenêtre du navigateur : chaque plateforme est accrochée à un bord, et redimensionner la fenêtre déplace le niveau. 54 énigmes écrites à la main, puis des parties engendrées à l’infini, sans compte et sans publicité.',
+                    'Un jeu de plateforme dont le décor est la fenêtre du navigateur : chaque plateforme est accrochée à un bord, et redimensionner la fenêtre déplace le niveau. 100 énigmes écrites à la main, puis des parties engendrées à l’infini, sans compte et sans publicité.',
             },
             azimut: {
                 name: 'Azimut',
