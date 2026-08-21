@@ -5,9 +5,9 @@ export const es: Dictionary = {
         title: 'Juegos en línea gratis',
         titleTag: 'Juegos en línea gratis, jugables en el navegador',
         description:
-            'Push Your Luck y Hombres Lobo: juegos gratis, sin registro, jugables directamente en el navegador. Nada que instalar.',
+            'Juegos gratis, sin registro, jugables directamente en el navegador. Nada que instalar, nada que descargar: abres la página y juegas.',
         shortName: 'Juegos',
-        ogAlt: 'Juegos en línea gratis — Push Your Luck y Hombres Lobo',
+        ogAlt: 'Juegos en línea gratis, jugables en el navegador',
         keywords:
             'juegos en línea, juego de navegador, juego gratis, juego de cartas, hombres lobo en línea, Léo Deroin',
     },
@@ -122,7 +122,7 @@ export const es: Dictionary = {
             },
             {
                 title: 'Contenido',
-                body: 'Los textos y las ilustraciones de este sitio son obra de su editor. Los nombres Push Your Luck y Hombres Lobo designan juegos editados por la misma persona, en sus propios dominios y bajo sus propias condiciones.',
+                body: 'Los textos y las ilustraciones de este sitio son obra de su editor. Los nombres de los juegos aquí listados designan juegos editados por la misma persona, en sus propios dominios y bajo sus propias condiciones.',
             },
             {
                 title: 'Enlaces salientes',

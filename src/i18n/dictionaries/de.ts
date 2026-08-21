@@ -5,9 +5,9 @@ export const de: Dictionary = {
         title: 'Kostenlose Onlinespiele',
         titleTag: 'Kostenlose Onlinespiele, direkt im Browser spielbar',
         description:
-            'Push Your Luck und Werwölfe: kostenlose Spiele, ohne Anmeldung, direkt im Browser spielbar. Nichts zu installieren.',
+            'Kostenlose Spiele, ohne Anmeldung, direkt im Browser spielbar. Nichts zu installieren, nichts herunterzuladen: Seite öffnen und spielen.',
         shortName: 'Spiele',
-        ogAlt: 'Kostenlose Onlinespiele — Push Your Luck und Werwölfe',
+        ogAlt: 'Kostenlose Onlinespiele, direkt im Browser spielbar',
         keywords:
             'Onlinespiele, Browserspiel, kostenloses Spiel, Kartenspiel, Werwölfe online, Léo Deroin',
     },
@@ -122,7 +122,7 @@ export const de: Dictionary = {
             },
             {
                 title: 'Inhalte',
-                body: 'Texte und Illustrationen dieser Seite stammen vom Herausgeber. Die Namen Push Your Luck und Werwölfe bezeichnen Spiele derselben Person, auf eigenen Domains und zu eigenen Bedingungen.',
+                body: 'Texte und Illustrationen dieser Seite stammen vom Herausgeber. Die Namen der hier aufgeführten Spiele bezeichnen Spiele derselben Person, auf eigenen Domains und zu eigenen Bedingungen.',
             },
             {
                 title: 'Ausgehende Links',

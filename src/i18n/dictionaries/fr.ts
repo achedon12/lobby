@@ -7,9 +7,9 @@ export const fr = {
         title: 'Jeux en ligne gratuits',
         titleTag: 'Jeux en ligne gratuits, jouables dans le navigateur',
         description:
-            'Push Your Luck et Loups-Garous : des jeux gratuits, sans inscription, jouables directement dans le navigateur. Rien à installer.',
+            'Des jeux gratuits, sans inscription, jouables directement dans le navigateur. Rien à installer, rien à télécharger : on ouvre la page et on joue.',
         shortName: 'Jeux',
-        ogAlt: 'Jeux en ligne gratuits — Push Your Luck et Loups-Garous',
+        ogAlt: 'Jeux en ligne gratuits, jouables dans le navigateur',
         keywords:
             'jeux en ligne, jeu navigateur, jeu gratuit, jeu de cartes, loup-garou en ligne, Léo Deroin',
     },
@@ -127,7 +127,7 @@ export const fr = {
             },
             {
                 title: 'Contenu',
-                body: 'Les textes et les illustrations de ce site sont l’œuvre de son éditeur. Les noms Push Your Luck et Loups-Garous désignent des jeux édités par la même personne, sur leurs propres domaines et sous leurs propres conditions.',
+                body: 'Les textes et les illustrations de ce site sont l’œuvre de son éditeur. Les noms des jeux référencés ici désignent des jeux édités par la même personne, sur leurs propres domaines et sous leurs propres conditions.',
             },
             {
                 title: 'Liens sortants',

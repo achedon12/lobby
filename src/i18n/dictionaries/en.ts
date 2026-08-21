@@ -5,9 +5,9 @@ export const en: Dictionary = {
         title: 'Free online games',
         titleTag: 'Free online games, playable in your browser',
         description:
-            'Push Your Luck and Werewolf: free games, no sign-up, playable straight from your browser. Nothing to install.',
+            'Free games, no sign-up, playable straight from your browser. Nothing to install, nothing to download: open the page and play.',
         shortName: 'Games',
-        ogAlt: 'Free online games — Push Your Luck and Werewolf',
+        ogAlt: 'Free online games, playable in your browser',
         keywords: 'online games, browser game, free game, card game, werewolf online, Léo Deroin',
     },
     header: {
@@ -121,7 +121,7 @@ export const en: Dictionary = {
             },
             {
                 title: 'Content',
-                body: 'The text and illustrations on this site are the work of its publisher. The names Push Your Luck and Werewolf refer to games published by the same person, on their own domains and under their own terms.',
+                body: 'The text and illustrations on this site are the work of its publisher. The names of the games listed here refer to games published by the same person, on their own domains and under their own terms.',
             },
             {
                 title: 'Outbound links',
