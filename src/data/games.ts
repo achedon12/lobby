@@ -5,7 +5,7 @@ export type GameStatus = 'live' | 'beta' | 'soon';
 // Clé d'accent, pas une couleur : la valeur vit dans `globals.css`, où elle a
 // une variante par thème. Un code hexadécimal posé ici serait juste dans un
 // seul des trois états.
-export type GameAccent = 'gold' | 'crimson' | 'azure' | 'violet' | 'ember' | 'teal';
+export type GameAccent = 'gold' | 'crimson' | 'azure' | 'violet' | 'ember' | 'phosphor';
 
 // Clé d'icône, pas un composant : ce module est de la donnée pure et doit
 // pouvoir être importé par le sitemap ou un script Node, qui ne savent rien de
@@ -42,7 +42,7 @@ export const GAMES: readonly Game[] = [
         id: 'anguille',
         url: 'https://anguille.page',
         status: 'live',
-        accent: 'teal',
+        accent: 'phosphor',
         icon: 'scan',
         year: 2026,
     },

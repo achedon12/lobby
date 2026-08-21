@@ -454,49 +454,56 @@ function AnguilleArt() {
     return (
         <svg viewBox="0 0 400 240" aria-hidden="true" className="size-full">
             <defs>
-                <linearGradient id="angRoom" x1="0" y1="0" x2="0.4" y2="1">
-                    <stop offset="0" stopColor="#16323a" />
-                    <stop offset="1" stopColor="#080f13" />
+                <linearGradient id="angConsole" x1="0" y1="0" x2="0.3" y2="1">
+                    <stop offset="0" stopColor="#0b1420" />
+                    <stop offset="1" stopColor="#04070a" />
                 </linearGradient>
-                {/* Le cône de la lampe. C'est LE sujet de la vignette : on
-                    examine une pièce posée sur un bureau, dans le noir. */}
-                <linearGradient id="angBeam" x1="0.5" y1="0" x2="0.5" y2="1">
-                    <stop offset="0" stopColor="#f2f7d0" stopOpacity="0.32" />
-                    <stop offset="1" stopColor="#f2f7d0" stopOpacity="0" />
-                </linearGradient>
-                <radialGradient id="angVignette" cx="0.5" cy="0.52" r="0.72">
-                    <stop offset="0.5" stopColor="#000000" stopOpacity="0" />
+                <pattern id="angScan" width="6" height="6" patternUnits="userSpaceOnUse">
+                    <rect width="6" height="2" fill="#d6e2ee" opacity="0.045" />
+                </pattern>
+                <radialGradient id="angVignette" cx="0.5" cy="0.5" r="0.74">
+                    <stop offset="0.46" stopColor="#000000" stopOpacity="0" />
                     <stop offset="1" stopColor="#000000" stopOpacity="0.55" />
                 </radialGradient>
             </defs>
 
-            <rect width="400" height="240" fill="url(#angRoom)" />
-            <path d="M168 0 L232 0 L336 240 L64 240 Z" fill="url(#angBeam)" />
+            {/* La console : ardoise presque noire et lignes de balayage. */}
+            <rect width="400" height="240" fill="url(#angConsole)" />
+            <rect width="400" height="240" fill="url(#angScan)" />
 
-            {/* La pièce examinée : un document, légèrement de biais pour qu'il
-                se lise comme posé et non comme collé au cadre. */}
-            <g transform="rotate(-3 200 132)">
-                <rect x="96" y="52" width="208" height="160" rx="6" fill="#f3f4ee" />
-                <rect x="96" y="52" width="208" height="30" rx="6" fill="#dfe3e8" />
-                <rect x="96" y="76" width="208" height="6" fill="#dfe3e8" />
-
-                {/* L'expéditeur, SURLIGNÉ. Le seul trait vif de la vignette,
-                    et le geste du jeu tout entier. */}
-                <rect x="112" y="60" width="132" height="15" rx="3" fill="#d9e02e" />
-                <rect x="117" y="65" width="122" height="5" rx="2.5" fill="#2a2c05" />
-
-                {/* Le corps, en lignes grises : illisible à dessein, l'œil doit
-                    aller au surlignage. */}
-                <rect x="112" y="98" width="150" height="7" rx="3.5" fill="#c3cad2" />
-                <rect x="112" y="116" width="176" height="7" rx="3.5" fill="#c3cad2" />
-                <rect x="112" y="134" width="132" height="7" rx="3.5" fill="#c3cad2" />
-                <rect x="112" y="164" width="88" height="24" rx="4" fill="#3f9fb2" />
+            {/* Les quatre équerres de visée, motif propre du site. */}
+            <g fill="none" stroke="#2ee6a8" strokeWidth="4" strokeLinecap="square">
+                <path d="M62 76V58h18" />
+                <path d="M320 58h18v18" />
+                <path d="M338 164v18h-18" />
+                <path d="M80 182H62v-18" />
             </g>
 
-            {/* La loupe, posée sur le document et débordant du cadre. */}
-            <circle cx="288" cy="168" r="46" fill="#0b1a20" fillOpacity="0.34" />
-            <circle cx="288" cy="168" r="46" fill="none" stroke="#5ac8d8" strokeWidth="7" />
-            <path d="M321 201 L352 232" stroke="#5ac8d8" strokeWidth="11" strokeLinecap="round" />
+            {/* Le spécimen : BLANC, comme sur le site. Une capture d'écran n'a
+                pas de mode sombre, et tout le contraste vient de là. */}
+            <rect x="76" y="72" width="248" height="96" rx="2" fill="#ffffff" />
+            <rect x="76" y="72" width="248" height="30" fill="#e8eef4" />
+            <rect x="76" y="101" width="248" height="1.5" fill="#d9e1e9" />
+
+            {/* L'expéditeur, en VIDÉO INVERSE : le geste du jeu. */}
+            <rect x="88" y="79" width="132" height="16" fill="#2ee6a8" />
+            <rect x="93" y="85" width="122" height="4" rx="2" fill="#04070a" />
+
+            {/* Le corps, en lignes grises : illisible à dessein. */}
+            <rect x="88" y="116" width="150" height="6" rx="3" fill="#d3dbe4" />
+            <rect x="88" y="132" width="184" height="6" rx="3" fill="#d3dbe4" />
+            <rect x="88" y="148" width="112" height="6" rx="3" fill="#d3dbe4" />
+
+            {/* Le chevron d'invite, sous le spécimen : la marque du site. */}
+            <path
+                d="m64 206 10 8-10 8"
+                fill="none"
+                stroke="#2ee6a8"
+                strokeWidth="4"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+            />
+            <rect x="84" y="212" width="66" height="5" rx="2.5" fill="#2ee6a8" opacity="0.5" />
 
             <rect width="400" height="240" fill="url(#angVignette)" />
         </svg>

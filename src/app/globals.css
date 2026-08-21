@@ -49,10 +49,11 @@
        famille de teinte se confondraient dans la liste. */
     --game-ember: #a8430a;
     --game-ember-soft: #fbe7d8;
-    /* Le bleu-vert d'Anguille. Distinct de l'azur d'Azimut, qui est un bleu
-       de nuit : celui-ci tire vers le cyan. */
-    --game-teal: #0f5a6b;
-    --game-teal-soft: #d9edf2;
+    /* Le phosphore d'Anguille — un vert d'écran, pas un vert de nature. Il
+       ne se confond ni avec l'azur d'Azimut, qui est un bleu de nuit, ni avec
+       la braise de Fugace, qui est orange. */
+    --game-phosphor: #056846;
+    --game-phosphor-soft: #d5f2e6;
 
     --status-live: #10794a;
     --status-live-soft: #dcf3e6;
@@ -89,8 +90,8 @@
         --game-violet-soft: #201839;
         --game-ember: #ff9d3c;
         --game-ember-soft: #33200e;
-        --game-teal: #58c9dc;
-        --game-teal-soft: #0a2830;
+        --game-phosphor: #2ee6a8;
+        --game-phosphor-soft: #062219;
 
         --status-live: #5fdda8;
         --status-live-soft: #10291f;
@@ -126,8 +127,8 @@
     --game-violet-soft: #201839;
     --game-ember: #ff9d3c;
     --game-ember-soft: #33200e;
-    --game-teal: #58c9dc;
-    --game-teal-soft: #0a2830;
+    --game-phosphor: #2ee6a8;
+    --game-phosphor-soft: #062219;
 
     --status-live: #5fdda8;
     --status-live-soft: #10291f;
@@ -156,7 +157,7 @@
         --game-azure: #092b4d;
         --game-violet: #3a139f;
         --game-ember: #8a3505;
-        --game-teal: #0a4655;
+        --game-phosphor: #024a32;
         --status-live: #0b5c37;
     }
 }
@@ -173,7 +174,7 @@
         --game-azure: #9fe2f9;
         --game-violet: #d3c4ff;
         --game-ember: #ffbe7d;
-        --game-teal: #97e3f2;
+        --game-phosphor: #7dffcd;
         --status-live: #7ef0be;
     }
 }
@@ -191,7 +192,7 @@
         --game-azure: #9fe2f9;
         --game-violet: #d3c4ff;
         --game-ember: #ffbe7d;
-        --game-teal: #97e3f2;
+        --game-phosphor: #7dffcd;
         --status-live: #7ef0be;
     }
 }
@@ -321,9 +322,9 @@
         --card-accent-soft: var(--game-ember-soft);
     }
 
-    [data-accent='teal'] {
-        --card-accent: var(--game-teal);
-        --card-accent-soft: var(--game-teal-soft);
+    [data-accent='phosphor'] {
+        --card-accent: var(--game-phosphor);
+        --card-accent-soft: var(--game-phosphor-soft);
     }
 
     [data-accent='violet'] {
