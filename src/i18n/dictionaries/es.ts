@@ -44,6 +44,16 @@ export const es: Dictionary = {
                 description:
                     'Un juego de plataformas cuyo escenario es la ventana del navegador: cada plataforma está anclada a un borde, y redimensionar la ventana mueve el nivel. 100 enigmas escritos a mano y luego partidas generadas sin fin, sin cuenta y sin publicidad.',
             },
+            anguille: {
+                name: 'Anguille',
+                facts: [
+                    'Solo',
+                    '204 piezas',
+                    'Sin cuenta',
+                ],
+                description:
+                    'Un juego donde se aprende a detectar mensajes falsos. Se presenta un correo, una página de acceso, un SMS o una factura, y hay que hacer clic en lo que falla — o declarar la pieza auténtica, porque una de cada tres lo es. Todas las organizaciones son inventadas.',
+            },
             azimut: {
                 name: 'Azimut',
                 facts: [
@@ -53,6 +63,16 @@ export const es: Dictionary = {
                 ],
                 description:
                     'Adivina el país del día solo por su silueta. Cada intento te indica a qué distancia está y en qué dirección: seis oportunidades para acercarte. La misma partida para todos, cada día, sin registro y sin publicidad.',
+            },
+            fugace: {
+                name: 'Fugace',
+                facts: [
+                    'Solo',
+                    '29 niveles',
+                    'Sin cuenta',
+                ],
+                description:
+                    'Una criatura vive en tu barra de pestañas. Nunca la verás en la página: solo en los títulos y los favicons. Mira su pestaña y huirá; mira la de al lado y le cierras la puerta — y solo puedes mirar una pestaña a la vez.',
             },
             'push-your-luck': {
                 name: 'Push Your Luck',
@@ -126,7 +146,7 @@ export const es: Dictionary = {
             },
             {
                 title: 'Enlaces salientes',
-                body: 'Este sitio solo enlaza a pushyourluck.net, loupsgarous.net y al repositorio público de su autor. No muestra publicidad ni contiene enlaces comerciales o de afiliación.',
+                body: 'Este sitio solo enlaza a los juegos que lista y al repositorio público de su autor. No muestra publicidad ni contiene enlaces comerciales o de afiliación.',
             },
         ],
         contactTitle: 'Contacto',

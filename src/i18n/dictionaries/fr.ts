@@ -46,6 +46,16 @@ export const fr = {
                 description:
                     'Un jeu de plateforme dont le décor est la fenêtre du navigateur : chaque plateforme est accrochée à un bord, et redimensionner la fenêtre déplace le niveau. 100 énigmes écrites à la main, puis des parties engendrées à l’infini, sans compte et sans publicité.',
             },
+            anguille: {
+                name: 'Anguille',
+                facts: [
+                    'Solo',
+                    '204 pièces',
+                    'Sans compte',
+                ],
+                description:
+                    'Un jeu où l’on apprend à repérer les faux messages. On présente un courriel, une page de connexion, un SMS ou une facture, et il faut cliquer sur ce qui cloche — ou déclarer la pièce authentique, car un tiers d’entre elles le sont. Toutes les organisations y sont inventées.',
+            },
             azimut: {
                 name: 'Azimut',
                 facts: [
@@ -55,6 +65,16 @@ export const fr = {
                 ],
                 description:
                     'Devinez le pays du jour à sa seule silhouette. Chaque proposition vous donne la distance qui vous en sépare et le cap à suivre : six essais pour converger. La même partie pour tout le monde, chaque jour, sans inscription et sans publicité.',
+            },
+            fugace: {
+                name: 'Fugace',
+                facts: [
+                    'Solo',
+                    '29 niveaux',
+                    'Sans compte',
+                ],
+                description:
+                    'Une créature vit dans votre barre d’onglets. On ne la voit jamais dans la page : seulement dans les titres et les favicons. Regarder son onglet la fait fuir, regarder son voisin lui ferme la porte — et on ne peut regarder qu’un onglet à la fois.',
             },
             'push-your-luck': {
                 name: 'Push Your Luck',
@@ -131,7 +151,7 @@ export const fr = {
             },
             {
                 title: 'Liens sortants',
-                body: 'Ce site ne renvoie que vers pushyourluck.net, loupsgarous.net et le dépôt public de son auteur. Il n’affiche aucune publicité et ne comporte aucun lien commercial ni affilié.',
+                body: 'Ce site ne renvoie que vers les jeux qu’il liste et vers le dépôt public de son auteur. Il n’affiche aucune publicité et ne comporte aucun lien commercial ni affilié.',
             },
         ],
         contactTitle: 'Contact',

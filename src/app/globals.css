@@ -44,6 +44,15 @@
     --game-azure-soft: #dbe8f4;
     --game-violet: #4c1fd6;
     --game-violet-soft: #e7e0fb;
+    /* La braise de Fugace. Franchement ORANGE, et non dorée : le doré est
+       déjà pris par Push Your Luck, et deux cartes voisines dans la même
+       famille de teinte se confondraient dans la liste. */
+    --game-ember: #a8430a;
+    --game-ember-soft: #fbe7d8;
+    /* Le bleu-vert d'Anguille. Distinct de l'azur d'Azimut, qui est un bleu
+       de nuit : celui-ci tire vers le cyan. */
+    --game-teal: #0f5a6b;
+    --game-teal-soft: #d9edf2;
 
     --status-live: #10794a;
     --status-live-soft: #dcf3e6;
@@ -78,6 +87,10 @@
         --game-azure-soft: #0b2733;
         --game-violet: #b9a0ff;
         --game-violet-soft: #201839;
+        --game-ember: #ff9d3c;
+        --game-ember-soft: #33200e;
+        --game-teal: #58c9dc;
+        --game-teal-soft: #0a2830;
 
         --status-live: #5fdda8;
         --status-live-soft: #10291f;
@@ -111,6 +124,10 @@
     --game-azure-soft: #0b2733;
     --game-violet: #b9a0ff;
     --game-violet-soft: #201839;
+    --game-ember: #ff9d3c;
+    --game-ember-soft: #33200e;
+    --game-teal: #58c9dc;
+    --game-teal-soft: #0a2830;
 
     --status-live: #5fdda8;
     --status-live-soft: #10291f;
@@ -138,6 +155,8 @@
         --game-crimson: #96220f;
         --game-azure: #092b4d;
         --game-violet: #3a139f;
+        --game-ember: #8a3505;
+        --game-teal: #0a4655;
         --status-live: #0b5c37;
     }
 }
@@ -153,6 +172,8 @@
         --game-crimson: #ffa694;
         --game-azure: #9fe2f9;
         --game-violet: #d3c4ff;
+        --game-ember: #ffbe7d;
+        --game-teal: #97e3f2;
         --status-live: #7ef0be;
     }
 }
@@ -169,6 +190,8 @@
         --game-crimson: #ffa694;
         --game-azure: #9fe2f9;
         --game-violet: #d3c4ff;
+        --game-ember: #ffbe7d;
+        --game-teal: #97e3f2;
         --status-live: #7ef0be;
     }
 }
@@ -291,6 +314,16 @@
     [data-accent='azure'] {
         --card-accent: var(--game-azure);
         --card-accent-soft: var(--game-azure-soft);
+    }
+
+    [data-accent='ember'] {
+        --card-accent: var(--game-ember);
+        --card-accent-soft: var(--game-ember-soft);
+    }
+
+    [data-accent='teal'] {
+        --card-accent: var(--game-teal);
+        --card-accent-soft: var(--game-teal-soft);
     }
 
     [data-accent='violet'] {

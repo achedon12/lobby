@@ -450,9 +450,110 @@ function ReflowArt() {
     );
 }
 
+function AnguilleArt() {
+    return (
+        <svg viewBox="0 0 400 240" aria-hidden="true" className="size-full">
+            <defs>
+                <linearGradient id="angRoom" x1="0" y1="0" x2="0.4" y2="1">
+                    <stop offset="0" stopColor="#16323a" />
+                    <stop offset="1" stopColor="#080f13" />
+                </linearGradient>
+                {/* Le cône de la lampe. C'est LE sujet de la vignette : on
+                    examine une pièce posée sur un bureau, dans le noir. */}
+                <linearGradient id="angBeam" x1="0.5" y1="0" x2="0.5" y2="1">
+                    <stop offset="0" stopColor="#f2f7d0" stopOpacity="0.32" />
+                    <stop offset="1" stopColor="#f2f7d0" stopOpacity="0" />
+                </linearGradient>
+                <radialGradient id="angVignette" cx="0.5" cy="0.52" r="0.72">
+                    <stop offset="0.5" stopColor="#000000" stopOpacity="0" />
+                    <stop offset="1" stopColor="#000000" stopOpacity="0.55" />
+                </radialGradient>
+            </defs>
+
+            <rect width="400" height="240" fill="url(#angRoom)" />
+            <path d="M168 0 L232 0 L336 240 L64 240 Z" fill="url(#angBeam)" />
+
+            {/* La pièce examinée : un document, légèrement de biais pour qu'il
+                se lise comme posé et non comme collé au cadre. */}
+            <g transform="rotate(-3 200 132)">
+                <rect x="96" y="52" width="208" height="160" rx="6" fill="#f3f4ee" />
+                <rect x="96" y="52" width="208" height="30" rx="6" fill="#dfe3e8" />
+                <rect x="96" y="76" width="208" height="6" fill="#dfe3e8" />
+
+                {/* L'expéditeur, SURLIGNÉ. Le seul trait vif de la vignette,
+                    et le geste du jeu tout entier. */}
+                <rect x="112" y="60" width="132" height="15" rx="3" fill="#d9e02e" />
+                <rect x="117" y="65" width="122" height="5" rx="2.5" fill="#2a2c05" />
+
+                {/* Le corps, en lignes grises : illisible à dessein, l'œil doit
+                    aller au surlignage. */}
+                <rect x="112" y="98" width="150" height="7" rx="3.5" fill="#c3cad2" />
+                <rect x="112" y="116" width="176" height="7" rx="3.5" fill="#c3cad2" />
+                <rect x="112" y="134" width="132" height="7" rx="3.5" fill="#c3cad2" />
+                <rect x="112" y="164" width="88" height="24" rx="4" fill="#3f9fb2" />
+            </g>
+
+            {/* La loupe, posée sur le document et débordant du cadre. */}
+            <circle cx="288" cy="168" r="46" fill="#0b1a20" fillOpacity="0.34" />
+            <circle cx="288" cy="168" r="46" fill="none" stroke="#5ac8d8" strokeWidth="7" />
+            <path d="M321 201 L352 232" stroke="#5ac8d8" strokeWidth="11" strokeLinecap="round" />
+
+            <rect width="400" height="240" fill="url(#angVignette)" />
+        </svg>
+    );
+}
+
+function FugaceArt() {
+    return (
+        <svg viewBox="0 0 400 240" aria-hidden="true" className="size-full">
+            <defs>
+                <linearGradient id="fugNight" x1="0" y1="0" x2="0.3" y2="1">
+                    <stop offset="0" stopColor="#16281b" />
+                    <stop offset="1" stopColor="#050906" />
+                </linearGradient>
+                <radialGradient id="fugGlow" cx="0.5" cy="0.5" r="0.5">
+                    <stop offset="0" stopColor="#ffb454" stopOpacity="0.55" />
+                    <stop offset="1" stopColor="#ffb454" stopOpacity="0" />
+                </radialGradient>
+                <radialGradient id="fugVignette" cx="0.5" cy="0.5" r="0.74">
+                    <stop offset="0.48" stopColor="#000000" stopOpacity="0" />
+                    <stop offset="1" stopColor="#000000" stopOpacity="0.6" />
+                </radialGradient>
+            </defs>
+
+            <rect width="400" height="240" fill="url(#fugNight)" />
+            <ellipse cx="200" cy="132" rx="170" ry="118" fill="url(#fugGlow)" />
+
+            {/* La barre d'onglets, grandeur d'affiche. C'est le plateau du jeu,
+                et la vignette ne montre rien d'autre. */}
+            <rect x="28" y="168" width="344" height="7" rx="3.5" fill="#384736" />
+
+            {/* Quatre onglets éteints, et un cinquième plus HAUT qui la tient.
+                La hauteur dit lequel compte, sans dépendre de la couleur. */}
+            <path d="M34 168V104a14 14 0 0 1 14-14h44a14 14 0 0 1 14 14v64Z" fill="#141b15" stroke="#384736" strokeWidth="6" strokeLinejoin="round" />
+            <circle cx="70" cy="130" r="9" fill="#56604f" />
+
+            <path d="M118 168V104a14 14 0 0 1 14-14h44a14 14 0 0 1 14 14v64Z" fill="#141b15" stroke="#384736" strokeWidth="6" strokeLinejoin="round" />
+            <circle cx="154" cy="130" r="9" fill="#56604f" />
+
+            <path d="M202 168V62a16 16 0 0 1 16-16h48a16 16 0 0 1 16 16v106Z" fill="#141b15" stroke="#ffb454" strokeWidth="7" strokeLinejoin="round" />
+            <circle cx="242" cy="106" r="30" fill="#ffb454" fillOpacity="0.24" />
+            <circle cx="242" cy="106" r="16" fill="#ffb454" />
+
+            <path d="M294 168V104a14 14 0 0 1 14-14h44a14 14 0 0 1 14 14v64Z" fill="#141b15" stroke="#384736" strokeWidth="6" strokeLinejoin="round" />
+            {/* Sa traînée : l'onglet qu'elle vient de quitter, encore tiède. */}
+            <circle cx="330" cy="130" r="10" fill="none" stroke="#ffb454" strokeWidth="4" strokeOpacity="0.45" />
+
+            <rect width="400" height="240" fill="url(#fugVignette)" />
+        </svg>
+    );
+}
+
 const ART: Record<GameKey, () => JSX.Element> = {
     reflow: ReflowArt,
+    anguille: AnguilleArt,
     azimut: AzimutArt,
+    fugace: FugaceArt,
     'push-your-luck': PushYourLuckArt,
     'loups-garous': LoupsGarousArt,
 };

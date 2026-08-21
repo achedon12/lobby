@@ -43,6 +43,16 @@ export const en: Dictionary = {
                 description:
                     'A platformer whose scenery is the browser window: every platform is pinned to an edge, and resizing the window moves the level itself. 100 hand-built puzzles, then endless generated runs, with no account and no ads.',
             },
+            anguille: {
+                name: 'Anguille',
+                facts: [
+                    'Solo',
+                    '204 exhibits',
+                    'No account',
+                ],
+                description:
+                    'A game where you learn to spot fake messages. You are shown an email, a sign-in page, a text or an invoice, and you click on what’s wrong — or declare the exhibit genuine, because a third of them are. Every organisation in it is invented.',
+            },
             azimut: {
                 name: 'Azimut',
                 facts: [
@@ -52,6 +62,16 @@ export const en: Dictionary = {
                 ],
                 description:
                     'Guess the country of the day from its outline alone. Every guess tells you how far away it is and which way to head: six tries to close in. The same puzzle for everyone, every day, with no sign-up and no ads.',
+            },
+            fugace: {
+                name: 'Fugace',
+                facts: [
+                    'Solo',
+                    '29 levels',
+                    'No account',
+                ],
+                description:
+                    'A creature lives in your browser tab bar. You never see it on the page, only in the titles and favicons. Look at its tab and it flees; look at the tab next door and you close that door — and you can only look at one tab at a time.',
             },
             'push-your-luck': {
                 name: 'Push Your Luck',
@@ -125,7 +145,7 @@ export const en: Dictionary = {
             },
             {
                 title: 'Outbound links',
-                body: 'This site links only to pushyourluck.net, loupsgarous.net and its author’s public repository. It carries no advertising and no commercial or affiliate links.',
+                body: 'This site links only to the games it lists and to its author’s public repository. It carries no advertising and no commercial or affiliate links.',
             },
         ],
         contactTitle: 'Contact',

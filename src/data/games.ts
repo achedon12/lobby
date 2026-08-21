@@ -5,12 +5,12 @@ export type GameStatus = 'live' | 'beta' | 'soon';
 // Clé d'accent, pas une couleur : la valeur vit dans `globals.css`, où elle a
 // une variante par thème. Un code hexadécimal posé ici serait juste dans un
 // seul des trois états.
-export type GameAccent = 'gold' | 'crimson' | 'azure' | 'violet';
+export type GameAccent = 'gold' | 'crimson' | 'azure' | 'violet' | 'ember' | 'teal';
 
 // Clé d'icône, pas un composant : ce module est de la donnée pure et doit
 // pouvoir être importé par le sitemap ou un script Node, qui ne savent rien de
 // React. La correspondance se fait dans `components/GameIcon.tsx`.
-export type GameIconKey = 'spade' | 'moon' | 'compass' | 'frame';
+export type GameIconKey = 'spade' | 'moon' | 'compass' | 'frame' | 'flame' | 'scan';
 
 export type Game = {
     /** Doit exister dans `games.items` des dictionnaires : le type le garantit. */
@@ -36,11 +36,33 @@ export const GAMES: readonly Game[] = [
         year: 2026,
     },
     {
+        // Deux cent quatre pièces et quinze pages d'explication : c'est le jeu
+        // le plus fourni du lot, et le seul dont le contenu ait une utilité en
+        // dehors de la partie.
+        id: 'anguille',
+        url: 'https://anguille.page',
+        status: 'live',
+        accent: 'teal',
+        icon: 'scan',
+        year: 2026,
+    },
+    {
         id: 'azimut',
         url: 'https://azimut.page',
         status: 'live',
         accent: 'azure',
         icon: 'compass',
+        year: 2026,
+    },
+    {
+        // Placé APRÈS les jeux qui se jouent d'un clic : Fugace demande
+        // d'ouvrir plusieurs onglets avant que quoi que ce soit se passe, et
+        // c'est une marche haute pour un visiteur qui découvre le panneau.
+        id: 'fugace',
+        url: 'https://fugace.page',
+        status: 'live',
+        accent: 'ember',
+        icon: 'flame',
         year: 2026,
     },
     {

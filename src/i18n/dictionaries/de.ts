@@ -44,6 +44,16 @@ export const de: Dictionary = {
                 description:
                     'Ein Jump-and-Run, dessen Kulisse das Browserfenster ist: jede Plattform hängt an einem Rand, und die Fenstergröße zu ändern verschiebt das Level selbst. 100 handgebaute Rätsel, danach endlos erzeugte Partien, ohne Konto und ohne Werbung.',
             },
+            anguille: {
+                name: 'Anguille',
+                facts: [
+                    'Allein',
+                    '204 Belege',
+                    'Ohne Konto',
+                ],
+                description:
+                    'Ein Spiel, in dem man gefälschte Nachrichten erkennen lernt. Gezeigt werden eine E-Mail, eine Anmeldeseite, eine SMS oder eine Rechnung, und man klickt an, was nicht stimmt — oder erklärt den Beleg für echt, denn jeder dritte ist es. Alle Organisationen darin sind erfunden.',
+            },
             azimut: {
                 name: 'Azimut',
                 facts: [
@@ -53,6 +63,16 @@ export const de: Dictionary = {
                 ],
                 description:
                     'Errate das Land des Tages allein an seiner Silhouette. Jeder Versuch verrät Entfernung und Richtung: sechs Anläufe, um näher zu kommen. Für alle dasselbe Rätsel, jeden Tag, ohne Anmeldung und ohne Werbung.',
+            },
+            fugace: {
+                name: 'Fugace',
+                facts: [
+                    'Allein',
+                    '29 Level',
+                    'Ohne Konto',
+                ],
+                description:
+                    'Ein Wesen lebt in deiner Tab-Leiste. Auf der Seite siehst du es nie, nur in den Titeln und Favicons. Schaust du seinen Tab an, flieht es; schaust du den Nachbartab an, schließt du ihm die Tür — und du kannst immer nur einen Tab anschauen.',
             },
             'push-your-luck': {
                 name: 'Push Your Luck',
@@ -126,7 +146,7 @@ export const de: Dictionary = {
             },
             {
                 title: 'Ausgehende Links',
-                body: 'Diese Seite verlinkt nur auf pushyourluck.net, loupsgarous.net und das öffentliche Repository ihres Autors. Sie zeigt keine Werbung und enthält keine kommerziellen oder Affiliate-Links.',
+                body: 'Diese Seite verlinkt nur auf die Spiele, die sie auflistet, und auf das öffentliche Repository ihres Autors. Sie zeigt keine Werbung und enthält keine kommerziellen oder Affiliate-Links.',
             },
         ],
         contactTitle: 'Kontakt',
